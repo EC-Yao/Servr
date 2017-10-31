@@ -1,10 +1,13 @@
 package com.example.eddy.servr.Activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.eddy.servr.R;
@@ -27,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     testView.setText("Dashboard Text");
                     mTextMessage.setText(R.string.title_dashboard);
+                    startLoginActivity();
                     return true;
                 case R.id.navigation_notifications:
                     testView.setText("Notification Text");
@@ -47,6 +51,11 @@ public class HomeActivity extends AppCompatActivity {
         testView = (TextView) findViewById(R.id.Test);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+    }
+
+    protected void startLoginActivity(){
+        Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
     }
 
 }
