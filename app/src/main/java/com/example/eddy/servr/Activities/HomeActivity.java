@@ -28,8 +28,8 @@ public class HomeActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    testView.setText("Dashboard Text");
-                    mTextMessage.setText(R.string.title_dashboard);
+                    testView.setText("Log in");
+                    mTextMessage.setText(R.string.title_login);
                     startLoginActivity();
                     return true;
                 case R.id.navigation_notifications:
