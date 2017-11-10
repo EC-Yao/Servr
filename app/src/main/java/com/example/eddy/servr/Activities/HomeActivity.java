@@ -1,10 +1,13 @@
 package com.example.eddy.servr.Activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.eddy.servr.R;
@@ -21,15 +24,15 @@ public class HomeActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    testView.setText("Home Text");
+                    testView.setText(R.string.title_home);
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    testView.setText("Dashboard Text");
+                    testView.setText(R.string.title_dashboard);
                     mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    testView.setText("Notification Text");
+                    testView.setText(R.string.title_notifications);
                     mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
@@ -48,5 +51,4 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
-
 }
