@@ -293,8 +293,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    protected void startHomeActivity() {
-        Intent i = new Intent(this, HomeActivity.class);
+    protected void startMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
@@ -341,7 +341,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
 
             if (success) {
-                startHomeActivity();
+                startMainActivity();
                 finish();
             } else {
                 mPasswordView.setError(getString(R.string.error_incorrect_password));
