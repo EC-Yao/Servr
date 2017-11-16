@@ -31,15 +31,14 @@ import android.widget.TextView;
 
 import com.example.eddy.servr.R;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
+import java.io.BufferedInputStream;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -197,7 +196,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             try {
-                mAuthTask.execute(new URL("http://posttestserver.com/post.php"));
+                mAuthTask.execute(new URL(getString(R.string.server_url)));
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
@@ -323,6 +322,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             try {
                 // Simulate network access.
                 HttpURLConnection client = (HttpURLConnection) url[0].openConnection();
+                client.setRequestMethod("POST");
+                client.setDoOutput(true);
+                client.setDoInput(true);
+
+                /*
+                client.addRequestProperty("E-mail", mEmail);
+                client.addRequestProperty("Password", mPassword);
+                */
+
+                /*
                 OutputStream out = new BufferedOutputStream(client.getOutputStream());
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
 
@@ -330,12 +339,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 writer.flush();
                 writer.close();
                 out.close();
+                */
+
+                InputStream in = new BufferedInputStream(client.getInputStream());
+                Scanner s = new Scanner(in).useDelimiter("\\A");
+                Log.d("Response: ", s.hasNext() ? s.next() : "");
+
                 client.connect();
 
-                Log.wtf("Email - Password ", mEmail + " - " + mPassword);
-                Thread.sleep(2000);
             } catch (Exception e) {
-                Log.wtf("Log-in Error", e.getMessage() + "\n" + e.getCause());
+                Log.d("Log-in Error", e.getMessage() + "\n" + e.getCause());
             }
 
             for (String credential : DUMMY_CREDENTIALS) {

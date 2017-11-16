@@ -3,8 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Servr.iml" filepath="$PROJECT_DIR$/Servr.iml" />
-      <module fileurl="file://C:\Users\eddy2\StudioProjects\Servr\Servr.iml" filepath="C:\Users\eddy2\StudioProjects\Servr\Servr.iml" />
-      <module fileurl="file://C:\Users\darli\AndroidStudioProjects\Servr\ServrDev.iml" filepath="C:\Users\darli\AndroidStudioProjects\Servr\ServrDev.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
