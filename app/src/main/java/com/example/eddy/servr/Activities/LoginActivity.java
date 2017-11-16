@@ -324,6 +324,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(URL... url) {
             // TODO: attempt authentication against a network service.
 
+
             try {
                 // Simulate network access.
                 HttpURLConnection client = (HttpURLConnection) url[0].openConnection();
@@ -334,7 +335,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 OutputStream out = new BufferedOutputStream(client.getOutputStream());
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
 
-                writer.write(URLEncoder.encode(("Email=" + mEmail + "&" + "Password=" + mPassword), "UTF-8"));
+                writer.write(URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode
+                        (mEmail, "UTF-8") + "&" + URLEncoder.encode("Password", "UTF-8") +
+                        "=" + URLEncoder.encode(mPassword, "UTF-8"));
                 writer.flush();
                 writer.close();
                 out.close();
@@ -346,7 +349,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 client.connect();
 
             } catch (Exception e) {
-                Log.d("Log-in Error", e.getMessage() + "\n" + e.getCause());
+                Log.e("Log-in Error", e.getMessage() + "\n" + e.getCause());
             }
 
             for (String credential : DUMMY_CREDENTIALS) {
