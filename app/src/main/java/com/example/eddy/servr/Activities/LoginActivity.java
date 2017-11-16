@@ -32,10 +32,15 @@ import android.widget.TextView;
 import com.example.eddy.servr.R;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -326,20 +331,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 client.setDoOutput(true);
                 client.setDoInput(true);
 
-                /*
-                client.addRequestProperty("E-mail", mEmail);
-                client.addRequestProperty("Password", mPassword);
-                */
-
-                /*
                 OutputStream out = new BufferedOutputStream(client.getOutputStream());
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
 
-                writer.write(mEmail + " - "  + mPassword);
+                writer.write(URLEncoder.encode(("Email=" + mEmail + "&" + "Password=" + mPassword), "UTF-8"));
                 writer.flush();
                 writer.close();
                 out.close();
-                */
 
                 InputStream in = new BufferedInputStream(client.getInputStream());
                 Scanner s = new Scanner(in).useDelimiter("\\A");
