@@ -10,6 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.eddy.servr.R;
@@ -35,6 +39,22 @@ public class MainActivity extends AppCompatActivity {
         myTabs.setupWithViewPager(myPage);
         setUpViewPager(myPage);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            default:
+                Log.d("hey", "hey");
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public void setUpViewPager (ViewPager viewPage){

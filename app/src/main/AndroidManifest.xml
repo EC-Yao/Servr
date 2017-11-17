@@ -28,11 +28,10 @@
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/title_activity_login" />
-        <activity android:name=".Activities.HomeActivity" />
         <activity
             android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

@@ -17,5 +17,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+
+    <!-- Strings related to UI -->
     <string name="title_activity_main">MainActivity</string>
+    <string name="settings_title">Preferences</string>
+    <string name="app_title">SERVR</string>
 </resources>
