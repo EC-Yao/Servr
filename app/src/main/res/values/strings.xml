@@ -18,4 +18,9 @@
         completions."
     </string>
     <string name="server_url">http://posttestserver.com/post.php</string>
+  
+    <!-- Strings related to UI -->
+    <string name="title_activity_main">MainActivity</string>
+    <string name="settings_title">Preferences</string>
+    <string name="app_title">SERVR</string>
 </resources>
