@@ -1,8 +1,6 @@
-package com.example.eddy.servr.Activities;
+package com.example.eddy.servr.activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,7 +12,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.eddy.servr.R;
 
@@ -70,11 +67,11 @@ public class MainActivity extends AppCompatActivity {
         private List<Fragment> myFragment = new ArrayList<>();
         private List<String>myPageTitle = new ArrayList<>();
 
-        public myViewPageAdapter(FragmentManager manager){
+        private myViewPageAdapter(FragmentManager manager){
             super(manager);
         }
 
-        public void addFragmentPage(Fragment frag, String title){
+        private void addFragmentPage(Fragment frag, String title){
             myFragment.add(frag);
             myPageTitle.add(title);
         }

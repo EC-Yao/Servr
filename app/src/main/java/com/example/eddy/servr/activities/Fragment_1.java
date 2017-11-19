@@ -1,4 +1,4 @@
-package com.example.eddy.servr.Activities;
+package com.example.eddy.servr.activities;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,17 +8,12 @@ import android.view.ViewGroup;
 
 import com.example.eddy.servr.R;
 
-/**
- * Created by darli on 2017-11-15.
- */
+public class Fragment_1 extends Fragment{
 
-public class Fragment_2 extends Fragment{
-
-    public Fragment_2(){};
+    public Fragment_1(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View fragment = inflater.inflate(R.layout.fragment_2, container, false);
-        return fragment;
+        return inflater.inflate(R.layout.fragment_1, container, false);
     }
 }
