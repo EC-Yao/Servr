@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
