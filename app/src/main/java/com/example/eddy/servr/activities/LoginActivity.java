@@ -324,7 +324,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         protected Boolean doInBackground(URL... url) {
             // TODO: attempt authentication against a network service.
 
-
             try {
                 // Simulate network access.
                 HttpURLConnection client = (HttpURLConnection) url[0].openConnection();
