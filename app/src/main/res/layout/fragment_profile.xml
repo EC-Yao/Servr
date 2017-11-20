@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="stream"
+        android:text="@string/profile_title"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

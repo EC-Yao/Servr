@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="sans-serif-smallcaps"
-        android:text="profile"
+        android:text="@string/search_title"
         android:textColor="@color/white"
         android:textSize="20sp" />
 

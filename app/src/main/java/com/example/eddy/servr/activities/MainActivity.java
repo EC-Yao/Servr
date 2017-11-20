@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUpViewPager (ViewPager viewPage){
         myViewPageAdapter adapter =new myViewPageAdapter(getSupportFragmentManager());
-        adapter.addFragmentPage(new Fragment_1(), "Stream");
-        adapter.addFragmentPage(new Fragment_2(), "Search");
-        adapter.addFragmentPage(new Fragment_3(), "Profile");
+        adapter.addFragmentPage(new StreamFragment(), "Stream");
+        adapter.addFragmentPage(new SearchFragment(), "Search");
+        adapter.addFragmentPage(new ProfileFragment(), "Profile");
 
         viewPage.setAdapter(adapter);
     }
@@ -91,8 +91,6 @@ public class MainActivity extends AppCompatActivity {
         public int getCount(){
             return 3;
         }
-
-
     }
 
 }

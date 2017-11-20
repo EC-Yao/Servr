@@ -23,4 +23,7 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="settings_title">Preferences</string>
     <string name="app_title">SERVR</string>
+    <string name="search_title">Search</string>
+    <string name="stream_title">Stream</string>
+    <string name="profile_title">Profile</string>
 </resources>
