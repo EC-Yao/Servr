@@ -344,7 +344,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                 InputStream in = new BufferedInputStream(client.getInputStream());
                 Scanner s = new Scanner(in).useDelimiter("\\A");
-                Log.d("Response: ", s.hasNext() ? s.next() : "");
+                Log.d("Response", s.hasNext() ? s.next() : "");
 
                 client.connect();
 
