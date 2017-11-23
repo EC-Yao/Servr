@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -26,7 +27,6 @@ import java.util.Arrays;
 public class StreamFragment extends Fragment{
 
     public StreamFragment(){}
-    Activity mActivity;
 
     @Override @NonNull
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -86,9 +86,11 @@ public class StreamFragment extends Fragment{
             //Handle TextView and display string from your list
             TextView listItemText = view.findViewById(R.id.list_item_string);
             listItemText.setText(list.get(position));
+            listItemText.setTextColor(Color.WHITE);
 
             TextView listItemPrice = view.findViewById(R.id.list_item_price);
             listItemPrice.setText("$Test Price");
+            listItemPrice.setTextColor(Color.WHITE);
 
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
