@@ -26,4 +26,5 @@
     <string name="search_title">Search</string>
     <string name="stream_title">Stream</string>
     <string name="profile_title">Profile</string>
+    <string name="price">$N</string>
 </resources>
