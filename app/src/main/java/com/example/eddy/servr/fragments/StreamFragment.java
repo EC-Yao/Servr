@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.activities.ServiceActivityTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -95,15 +97,9 @@ public class StreamFragment extends Fragment{
             view.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
-                    new AlertDialog.Builder(getContext())
-                            .setMessage("Sorry this feature hasn't been implemented yet! You " +
-                                    "clicked on: " + list.get(position))
-                            .setNeutralButton("Close", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                }
-                            })
-                            .show();
+                    Intent i = new Intent(getActivity(), ServiceActivityTest.class);
+                    ServiceActivityTest.toolbarName = list.get(position);
+                    startActivity(i);
                 }
             });
 

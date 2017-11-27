@@ -14,6 +14,7 @@ import com.example.eddy.servr.R;
 public class ServiceActivityTest extends AppCompatActivity {
 
     Toolbar toolbar;
+    public static String toolbarName = "Default";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class ServiceActivityTest extends AppCompatActivity {
             Log.e("Error", "Null SupportActionBar");
         }
         else {
-            getSupportActionBar().setTitle("hey");
+            getSupportActionBar().setTitle(toolbarName);
         }
 
 
