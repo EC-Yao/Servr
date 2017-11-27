@@ -8,12 +8,12 @@ import android.view.ViewGroup;
 
 import com.example.eddy.servr.R;
 
-public class Fragment_3 extends Fragment{
+public class ProfileFragment extends Fragment{
 
-    public Fragment_3(){}
+    public ProfileFragment(){}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_3, container, false);
+        return inflater.inflate(R.layout.fragment_profile, container, false);
     }
 }
