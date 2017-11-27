@@ -1,16 +1,34 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-    </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar" />
 
     <!-- Toolbar Theme -->
-    <style name="ToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="StatusBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>
 
     </style>
+
+    <!-- General Theme -->
+    <style name="GeneralStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:titleTextColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorAccentRed1</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+    </style>
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- TabLayout Theme -->
     <style name="TabLayoutStyle" parent="Theme.AppCompat.Light.NoActionBar">
@@ -31,8 +49,7 @@
     </style>
 
 
-
-        <!-- Custom TOolbar Theme. -->
+    <!-- Custom TOolbar Theme. -->
     <style name="customToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:statusBarColor">@color/colorPrimaryDark</item>

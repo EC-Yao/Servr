@@ -1,5 +1,6 @@
 package com.example.eddy.servr.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,11 +28,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        myTabs = (TabLayout) findViewById(R.id.MyTabs);
-        myPage = (ViewPager) findViewById(R.id.MyPage);
+        myTabs = findViewById(R.id.MyTabs);
+        myPage = findViewById(R.id.MyPage);
 
         myTabs.setupWithViewPager(myPage);
         setUpViewPager(myPage);
@@ -50,7 +50,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             default:
-                Log.d("hey", "hey");
+                Intent i = new Intent(getApplicationContext(), ServiceActivityTest.class);
+                startActivity(i);
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -90,6 +93,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount(){
             return 3;
+        }
+
+        private void startServiceActivity() {
+            Intent i = new Intent(getApplicationContext(), ServiceActivityTest.class);
+            startActivity(i);
         }
     }
 
