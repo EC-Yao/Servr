@@ -96,7 +96,8 @@ public class StreamFragment extends Fragment{
                 @Override
                 public void onClick(View v) {
                     new AlertDialog.Builder(getContext())
-                            .setMessage("Sorry this feature hasn't been implemented yet!")
+                            .setMessage("Sorry this feature hasn't been implemented yet! You " +
+                                    "clicked on: " + list.get(position))
                             .setNeutralButton("Close", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
