@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.LoadingActivity"
+            android:name=".activities.LoadingActivity"
             android:label="@string/app_name"
             android:noHistory="true">
             <intent-filter>
@@ -27,14 +27,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".Activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.ServiceActivityTest"
+            android:name=".activities.ServiceActivityTest"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme" />
     </application>

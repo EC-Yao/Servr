@@ -1,4 +1,4 @@
-package com.example.eddy.servr.Activities;
+package com.example.eddy.servr.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
