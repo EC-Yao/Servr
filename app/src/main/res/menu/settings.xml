@@ -4,6 +4,6 @@
         android:id="@+id/action_settings"
         android:title="@string/settings_title"
         app:showAsAction="ifRoom"
-        android:icon="@android:drawable/ic_menu_preferences" />
+        android:icon="@drawable/settings_cog" />
 
 </menu>

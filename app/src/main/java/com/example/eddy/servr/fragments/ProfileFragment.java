@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 
 import com.example.eddy.servr.R;
 
-public class ProfileFragment extends Fragment{
+public class    ProfileFragment extends Fragment{
 
     public ProfileFragment(){}
 

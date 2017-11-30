@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.eddy.servr.activities.MainActivity">
+    tools:context="com.example.eddy.servr.Activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,12 +15,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="35dp"
             android:background="@color/white"
-            app:title="@string/app_title"
-            app:titleTextColor="@color/colorPrimaryDark"
             app:popupTheme="@style/WhiteLayoutStyle"
-            />
+            app:title="@string/app_title"
+            app:titleTextColor="@color/colorPrimaryDark" />
 
         <!--
 

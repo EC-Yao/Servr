@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;

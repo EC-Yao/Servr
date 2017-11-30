@@ -1,10 +1,7 @@
 package com.example.eddy.servr.fragments;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,14 +11,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.eddy.servr.R;
-import com.example.eddy.servr.activities.ServiceActivityTest;
+import com.example.eddy.servr.Activities.ServiceActivityTest;
 
 import java.util.ArrayList;
 import java.util.Arrays;

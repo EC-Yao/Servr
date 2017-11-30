@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +16,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     protected void startActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
+        Intent i = new Intent(this, BufferActivity.class);
         startActivity(i);
     }
 

@@ -20,16 +20,6 @@
     </style>
 
 
-
-
-
-
-
-
-
-
-
-
     <!-- TabLayout Theme -->
     <style name="TabLayoutStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">@color/white</item>
