@@ -35,13 +35,13 @@
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Activities.ServiceActivityTest"
+            android:name=".Activities.ServiceItemActivity"
             android:label="@string/title_activity_scrolling"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".Activities.BufferActivity"
             android:label="@string/title_activity_buffer"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

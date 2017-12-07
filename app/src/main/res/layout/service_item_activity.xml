@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.eddy.servr.Activities.ServiceActivityTest">
+    tools:context="com.example.eddy.servr.Activities.ServiceItemActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
@@ -31,8 +31,7 @@
                 android:layout_height="39dp"
                 android:theme="@style/WhiteLayoutStyle"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/GeneralStyle"
-                />
+                app:popupTheme="@style/GeneralStyle" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
@@ -49,6 +48,6 @@
 
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/dao_design_white" />
 
 </android.support.design.widget.CoordinatorLayout>

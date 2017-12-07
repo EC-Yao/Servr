@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             default:
-                Intent i = new Intent(getApplicationContext(), ServiceActivityTest.class);
+                Intent i = new Intent(getApplicationContext(), ServiceItemActivity.class);
                 startActivity(i);
 
 
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         private void startServiceActivity() {
-            Intent i = new Intent(getApplicationContext(), ServiceActivityTest.class);
+            Intent i = new Intent(getApplicationContext(), ServiceItemActivity.class);
             startActivity(i);
         }
     }
