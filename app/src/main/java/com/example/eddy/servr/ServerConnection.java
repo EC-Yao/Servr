@@ -17,9 +17,18 @@ public class ServerConnection {
     public ServerConnection(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        listenSocket();
         sendPing();
         System.out.println("Pinged");
+    }
+
+    public void sendData(String data){
+        listenSocket();
+        try {
+            out.println(data);
+            System.out.println(in.readLine());
+        } catch (Exception e) {
+            System.out.println(Arrays.toString(e.getStackTrace()));
+        }
     }
 
     private void listenSocket(){
@@ -33,6 +42,7 @@ public class ServerConnection {
     }
 
     private void sendPing(){
+        listenSocket();
         try {
             out.println("Ping");
             System.out.println(in.readLine());

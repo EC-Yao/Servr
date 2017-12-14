@@ -9,6 +9,8 @@ import com.example.eddy.servr.ServerConnection;
 
 public class LoadingActivity extends AppCompatActivity {
 
+    public static ServerConnection servr;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,7 +20,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     protected void connectServer(){
-        ServerConnection servr = new ServerConnection();
+        servr = new ServerConnection();
     }
 
     protected void startActivity() {
