@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
 
 public class LoadingActivity extends AppCompatActivity {
 
@@ -12,7 +13,12 @@ public class LoadingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        connectServer();
         startActivity();
+    }
+
+    protected void connectServer(){
+        ServerConnection servr = new ServerConnection();
     }
 
     protected void startActivity() {
@@ -22,7 +28,6 @@ public class LoadingActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-
     }
 
     protected void onResume() {
