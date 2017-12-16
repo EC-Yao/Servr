@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -108,6 +109,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         tempCheatButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoadingActivity.servr.sendMessage("Log-in Bypassed");
                 startMainActivity();
             }
         });
@@ -225,7 +227,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() == 4;
     }
 
     /**
@@ -312,8 +314,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     protected void startMainActivity() {
-        LoadingActivity.servr.sendData("Log-in Bypassed");
-
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
@@ -337,13 +337,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
-                LoadingActivity.servr.sendData(mEmail + " : " + mPassword);
-                System.out.println("Sent Credentials");
+                LoadingActivity.servr.login(mEmail + ":" + mPassword);
             } catch (Exception e) {
                 Log.e("Log-in Error", e.getMessage() + "\n" + e.getCause());
             }
 
-            // TODO: register the new account here.
             return true;
         }
 
@@ -352,11 +350,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (ServerConnection.user != null) {
                 startMainActivity();
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.setError(getString(R.string.error_incorrect_credentials));
                 mPasswordView.requestFocus();
             }
         }
