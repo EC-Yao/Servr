@@ -11,20 +11,25 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:focusable="true"
     android:focusableInTouchMode="true"
+    android:id="@+id/login_layout"
     tools:context="com.example.eddy.servr.Activities.LoginActivity">
 
     <!-- Login progress -->
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="18dp" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="168dp"
         android:layout_height="159dp"
-        app:srcCompat="@drawable/dao_design_black"
-        android:contentDescription="@string/logo_description"/>
+        android:contentDescription="@string/logo_description"
+        app:srcCompat="@drawable/dao_design_black" />
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="44dp" />
+        android:layout_height="17dp" />
 
     <ProgressBar
         android:id="@+id/login_progress"
@@ -86,16 +91,25 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
+                style="?android:textAppearanceSmall"
                 android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="?android:textAppearanceSmall"
+                android:textStyle="bold"
+                android:text="@string/register_button" />
 
             <Button
                 android:id="@+id/cheat_button"
                 style="?android:textAppearanceSmall"
+                android:textStyle="bold"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"

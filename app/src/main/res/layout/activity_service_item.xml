@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:statusBarBackground="@color/statusBarColor"
     android:fitsSystemWindows="true"
     tools:context="com.example.eddy.servr.Activities.ServiceItemActivity">
 
@@ -44,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
 
-        app:backgroundTint="@color/colorPrimaryDark"
+        app:backgroundTint="@color/colorPrimary"
 
         app:layout_anchor="@id/app_bar"
         app:layout_anchorGravity="bottom|end"
