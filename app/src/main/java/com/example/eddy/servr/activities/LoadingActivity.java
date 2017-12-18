@@ -3,7 +3,6 @@ package com.example.eddy.servr.activities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
 
@@ -26,7 +25,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     protected void startActivity() {
-        Intent i = new Intent(this, LoginActivity.class);
+        Intent i = new Intent(this, BufferActivity.class);
         startActivity(i);
     }
 
