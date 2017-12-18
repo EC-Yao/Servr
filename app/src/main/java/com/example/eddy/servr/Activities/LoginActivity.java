@@ -1,9 +1,11 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -16,21 +18,27 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.example.eddy.servr.R;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -51,6 +59,14 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    private Context mContext;
+    private Activity mActivity;
+
+    private Button registerButton;
+    private LinearLayout mCoordinatorLayout;
+
+    private PopupWindow mPopupWindow;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -111,11 +127,95 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startMainActivity();
             }
         });
+//start
+
+        mContext = getApplicationContext();
+        //mActivity = MainActivity.this;
+        registerButton = findViewById(R.id.register_button);
+        mCoordinatorLayout = findViewById(R.id.login_layout);
+
+
+        registerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                //inflates the popup xml
+                LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
+
+                View customView = inflater.inflate(R.layout.popup_register, null);
+
+                if(customView == null){
+                    System.out.println("LOGIN ACTIVITY: customView is null");
+                }else{
+                    //intializes the popup window
+                    mPopupWindow = new PopupWindow(customView, 650, 1200);
+
+                    //set an elavation value for the popup window
+                        mPopupWindow.setElevation(5.0f);
+
+                    //creates the close button
+                    ImageButton closeButton = customView.findViewById(R.id.ib_close);
+                    closeButton.setOnClickListener(new View.OnClickListener(){
+                        public void onClick(View view){
+                            mPopupWindow.dismiss();
+                        }
+                    });
+
+                    //allows the editTexts to be edited
+                    mPopupWindow.setFocusable(true);
+                    mPopupWindow.update();
+
+                    //declaring editTexts
+                    TextInputEditText user = findViewById(R.id.user_reg_edit);
+                    TextInputEditText pin = findViewById(R.id.pin_reg_edit);
+                    TextInputEditText email = findViewById(R.id.email_reg_edit);
+                    TextInputEditText phone = findViewById(R.id.phone_reg_edit);
+                    TextInputEditText city = findViewById(R.id.city_reg_edit);
+                    TextInputEditText country = findViewById(R.id.countryreg_edit);
+
+                    //Saving the users submissions
+                    Button submit = customView.findViewById(R.id.sumbit_reg_button);
+                    if(submit==null){
+                        System.out.println("n null");
+                    }
+                    else{
+                        System.out.println("null");
+                    }
+
+                    if(submit == null){
+                        System.out.println("LOGIN ACTIVITY: Submit button null");
+                    }else{
+                        submit.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                //TO:DO
+                                //  get the text
+                                //  error trapping
+                                //  note: getText returns CharSequences not Strings!
+                                //  Checking for 4 digit stuff
+                                //  Checking for the right phone number (rip off the one from the login
+                            }
+                        });
+
+                        //stops the keyboard from opening on startup
+                        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+
+                        //show the pop up window at the center of the layout
+                        mCoordinatorLayout.post(new Runnable() {
+                            public void run() {
+                                mPopupWindow.showAtLocation(mCoordinatorLayout, Gravity.CENTER, 0, 0);
+                            }
+                        });
+                    }
+
+                }
+            }
+        });
+
+
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
     }
-
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -392,5 +492,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+
+//    public void showRegisterScreen(View anchorView){
+//        View popupView = getLayoutInflater().inflate(R.layout.fragment_popup, null);
+//        PopupWindow popupWindow = new PopupWindow(popupView, Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+//        TextView tv = popupView.findViewById(R.id.popupTextView);
+//        tv.setText(R.string.placeholder_email);
+//        popupWindow.setBackgroundDrawable(new ColorDrawable());
+//
+//        popupWindow.setFocusable(true);
+//        int location[] = new int[2];
+//        anchorView.getLocationOnScreen(location);
+//        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0,0);
+//        //popupWindow.showAtLocation(anchorView, Gravity.NO_GRAVITY, location[0], location[1] + anchorView.getHeight());
+//    }
 }
 

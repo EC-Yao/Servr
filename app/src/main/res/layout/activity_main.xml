@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main_layout"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.eddy.servr.activities.MainActivity">
+    tools:context="com.example.eddy.servr.Activities.MainActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -15,13 +16,12 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="35dp"
-            android:background="@color/white"
-            app:title="@string/app_title"
-            app:titleTextColor="@color/colorPrimaryDark"
-            app:popupTheme="@style/WhiteLayoutStyle"
-            />
+            android:background="@color/colorPrimary"
+            app:subtitleTextColor="@color/black"
 
+            android:textColor="@color/white"
+            app:title="@string/app_title"
+            app:titleTextColor="@color/white" />
         <!--
 
             app:popupTheme="@style/PopUpStyle"
@@ -38,7 +38,7 @@
             app:tabGravity="center"
             app:tabIndicatorColor="@color/colorAccentRed2"
             app:tabSelectedTextColor="@color/colorAccentRed2"
-            app:tabTextColor="@color/colorPrimaryDark"
+            app:tabTextColor="@color/colorPrimary"
 
             />
 

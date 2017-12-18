@@ -9,8 +9,8 @@
     
     android:visibility="visible"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.eddy.servr.activities.ServiceActivityTest"
-    tools:showIn="@layout/service_test_activity">
+    tools:context="com.example.eddy.servr.Activities.ServiceItemActivity"
+    tools:showIn="@layout/activity_service_item">
 
     <TextView
         android:id="@+id/serviceLargeTextView"
