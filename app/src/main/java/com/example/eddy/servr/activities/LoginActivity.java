@@ -1,4 +1,4 @@
-package com.example.eddy.servr.Activities;
+package com.example.eddy.servr.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -36,7 +36,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
 import java.io.BufferedInputStream;

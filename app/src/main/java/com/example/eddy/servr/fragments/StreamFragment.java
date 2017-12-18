@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.eddy.servr.Activities.MyAdapter;
+import com.example.eddy.servr.activities.MyAdapter;
 import com.example.eddy.servr.R;
 
 public class StreamFragment extends Fragment{

@@ -12,7 +12,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:id="@+id/login_layout"
-    tools:context="com.example.eddy.servr.Activities.LoginActivity">
+    tools:context="com.example.eddy.servr.activities.LoginActivity">
 
     <!-- Login progress -->
 

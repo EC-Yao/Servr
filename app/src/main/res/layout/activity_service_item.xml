@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     app:statusBarBackground="@color/statusBarColor"
     android:fitsSystemWindows="true"
-    tools:context="com.example.eddy.servr.Activities.ServiceItemActivity">
+    tools:context="com.example.eddy.servr.activities.ServiceItemActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
