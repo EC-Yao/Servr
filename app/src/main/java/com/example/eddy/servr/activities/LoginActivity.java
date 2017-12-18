@@ -2,6 +2,7 @@ package com.example.eddy.servr.activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
@@ -39,19 +40,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -90,6 +80,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+    private TextInputEditText user;
+    private TextInputEditText pin;
+    private TextInputEditText email;
+    private TextInputEditText phone;
+    private TextInputEditText city;
+    private TextInputEditText country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +139,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 //inflates the popup xml
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 
-                View customView = inflater.inflate(R.layout.popup_register, null);
+                assert inflater != null;
+                @SuppressLint("InflateParams") View customView = inflater.inflate(R.layout.popup_register, null);
 
                 if(customView == null){
                     System.out.println("LOGIN ACTIVITY: customView is null");
@@ -166,21 +164,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     mPopupWindow.update();
 
                     //declaring editTexts
-                    TextInputEditText user = findViewById(R.id.user_reg_edit);
-                    TextInputEditText pin = findViewById(R.id.pin_reg_edit);
-                    TextInputEditText email = findViewById(R.id.email_reg_edit);
-                    TextInputEditText phone = findViewById(R.id.phone_reg_edit);
-                    TextInputEditText city = findViewById(R.id.city_reg_edit);
-                    TextInputEditText country = findViewById(R.id.countryreg_edit);
+                    user = findViewById(R.id.user_reg_edit);
+                    pin = findViewById(R.id.pin_reg_edit);
+                    email = findViewById(R.id.email_reg_edit);
+                    phone = findViewById(R.id.phone_reg_edit);
+                    city = findViewById(R.id.city_reg_edit);
+                    country = findViewById(R.id.countryreg_edit);
+
+                    System.out.println("buttons made");
 
                     //Saving the users submissions
                     Button submit = customView.findViewById(R.id.sumbit_reg_button);
-                    if(submit==null){
-                        System.out.println("n null");
-                    }
-                    else{
-                        System.out.println("null");
-                    }
 
                     if(submit == null){
                         System.out.println("LOGIN ACTIVITY: Submit button null");
@@ -194,6 +188,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 //  note: getText returns CharSequences not Strings!
                                 //  Checking for 4 digit stuff
                                 //  Checking for the right phone number (rip off the one from the login
+
+                                try{
+                                    LoadingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
+                                            user.getText().toString(), pin.getText().toString(),
+                                            email.getText().toString(), phone.getText().toString(),
+                                            city.getText().toString(), country.getText().toString()));
+                                } catch (Exception e){
+                                    System.out.println(e.getMessage());
+                                }
                             }
                         });
 
@@ -211,8 +214,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             }
         });
-
-
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
@@ -421,6 +422,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
+    @SuppressLint("StaticFieldLeak")
     private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
