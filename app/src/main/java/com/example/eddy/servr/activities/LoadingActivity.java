@@ -4,14 +4,24 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
 
 public class LoadingActivity extends AppCompatActivity {
+
+    public static ServerConnection servr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
+        System.out.println("testing");
+        connectServer();
+        System.out.println("testing2");
         startActivity();
+    }
+
+    protected void connectServer(){
+        servr = new ServerConnection();
     }
 
     protected void startActivity() {
@@ -21,7 +31,6 @@ public class LoadingActivity extends AppCompatActivity {
 
     protected void onPause() {
         super.onPause();
-
     }
 
     protected void onResume() {

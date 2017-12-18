@@ -38,6 +38,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
@@ -123,6 +124,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         tempCheatButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                LoadingActivity.servr.sendMessage("Log-in Bypassed");
                 startMainActivity();
             }
         });
@@ -307,10 +309,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+
             mAuthTask = new UserLoginTask(email, password);
             try {
-                mAuthTask.execute(new URL(getString(R.string.server_url)));
-            } catch (MalformedURLException e) {
+                mAuthTask.execute();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -323,7 +326,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() == 4;
     }
 
     /**
@@ -418,7 +421,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      * Represents an asynchronous login/registration task used to authenticate
      * the user.
      */
-    private class UserLoginTask extends AsyncTask<URL, Void, Boolean> {
+    private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
         private final String mEmail;
         private final String mPassword;
@@ -429,45 +432,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
 
         @Override
-        protected Boolean doInBackground(URL... url) {
+        protected Boolean doInBackground(Void... voids) {
             // TODO: attempt authentication against a network service.
 
             try {
-                // Simulate network access.
-                HttpURLConnection client = (HttpURLConnection) url[0].openConnection();
-                client.setRequestMethod("POST");
-                client.setDoOutput(true);
-                client.setDoInput(true);
-
-                OutputStream out = new BufferedOutputStream(client.getOutputStream());
-                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(out, "UTF-8"));
-
-                writer.write(URLEncoder.encode("Email", "UTF-8") + "=" + URLEncoder.encode
-                        (mEmail, "UTF-8") + "&" + URLEncoder.encode("Password", "UTF-8") +
-                        "=" + URLEncoder.encode(mPassword, "UTF-8"));
-                writer.flush();
-                writer.close();
-                out.close();
-
-                InputStream in = new BufferedInputStream(client.getInputStream());
-                Scanner s = new Scanner(in).useDelimiter("\\A");
-                Log.d("Response", s.hasNext() ? s.next() : "");
-
-                client.connect();
-
+                LoadingActivity.servr.login(mEmail + ":" + mPassword);
             } catch (Exception e) {
                 Log.e("Log-in Error", e.getMessage() + "\n" + e.getCause());
             }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
             return true;
         }
 
@@ -476,11 +449,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
+            if (ServerConnection.user != null) {
                 startMainActivity();
                 finish();
             } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
+                mPasswordView.setError(getString(R.string.error_incorrect_credentials));
                 mPasswordView.requestFocus();
             }
         }
