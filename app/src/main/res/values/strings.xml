@@ -14,7 +14,7 @@
     <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is invalid</string>
+    <string name="error_invalid_password">This PIN is invalid - Must be a 4-digit integer</string>
     <string name="error_incorrect_credentials">These credentials do not exist</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
@@ -76,6 +76,7 @@
     <string name="default_contact_image">Default Contact Photo</string>
     <string name="logo_description">A logo for the application Servr</string>
     <string name="close_button">A button for closing pop up tabs</string>
+    <string name="error_invalid_phone">This phone number is invalid</string>
 
 
 </resources>

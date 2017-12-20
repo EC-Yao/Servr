@@ -140,7 +140,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 
                 assert inflater != null;
-                @SuppressLint("InflateParams") View customView = inflater.inflate(R.layout.popup_register, null);
+                @SuppressLint("InflateParams") final View customView = inflater.inflate(R.layout.popup_register, null);
 
                 if(customView == null){
                     System.out.println("LOGIN ACTIVITY: customView is null");
@@ -169,7 +169,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     email = findViewById(R.id.email_reg_edit);
                     phone = findViewById(R.id.phone_reg_edit);
                     city = findViewById(R.id.city_reg_edit);
-                    country = findViewById(R.id.countryreg_edit);
+                    country = findViewById(R.id.country_reg_edit);
 
                     System.out.println("buttons made");
 
@@ -182,20 +182,45 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         submit.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View view) {
-                                //TO:DO
-                                //  get the text
-                                //  error trapping
-                                //  note: getText returns CharSequences not Strings!
-                                //  Checking for 4 digit stuff
-                                //  Checking for the right phone number (rip off the one from the login
+                                Boolean validRegistration = true;
 
-                                try{
-                                    BufferingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
-                                            user.getText().toString(), pin.getText().toString(),
-                                            email.getText().toString(), phone.getText().toString(),
-                                            city.getText().toString(), country.getText().toString()));
-                                } catch (Exception e){
-                                    System.out.println(e.getMessage());
+                                //error trapping
+                                TextInputEditText user = customView.findViewById(R.id.user_reg_edit);
+                                TextInputEditText pin = customView.findViewById(R.id.pin_reg_edit);
+                                TextInputEditText email = customView.findViewById(R.id.email_reg_edit);
+                                TextInputEditText phone = customView.findViewById(R.id.phone_reg_edit);
+                                TextInputEditText city = customView.findViewById(R.id.city_reg_edit);
+                                TextInputEditText country = customView.findViewById(R.id.country_reg_edit);
+
+                                String userEmail = email.getText().toString();
+                                String userPin = pin.getText().toString();
+                                String userPhone = phone.getText().toString();
+
+                                if (!isEmailValid(userEmail)){
+                                    email.setError(getString(R.string.error_invalid_email));
+                                    validRegistration = false;
+                                }
+                                if (!isPasswordValid(userPin)){
+                                    pin.setError(getString(R.string.error_invalid_password));
+                                    validRegistration = false;
+                                }
+                                if (!isPhoneValid(userPhone)){
+                                    phone.setError(getString(R.string.error_invalid_phone));
+                                    validRegistration = false;
+                                }
+
+                                if (validRegistration){
+                                    try{
+                                        BufferingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
+                                                user.getText().toString(), pin.getText().toString(),
+                                                email.getText().toString(), phone.getText().toString(),
+                                                city.getText().toString(), country.getText().toString()));
+                                        mEmailView.setText(email.getText().toString());
+                                        mPasswordView.setText(pin.getText().toString());
+                                        attemptLogin();
+                                    } catch (Exception e){
+                                        System.out.println(e.getMessage());
+                                    }
                                 }
                             }
                         });
@@ -227,9 +252,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private boolean mayRequestContacts() {
-        //if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-        //    return true;
-        //}
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
@@ -260,7 +282,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         }
     }
-
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -325,9 +346,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return email.contains("@");
     }
 
-    private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() == 4;
+    private boolean isPasswordValid(String pin) {
+        if(pin.length()==4) {
+            try {
+                Integer.parseInt(pin);
+                return true;
+            } catch (Exception e) {
+                return false;
+            }
+        }
+        return false;
+    }
+
+    private boolean isPhoneValid(String phone){
+        try{
+            Long.parseLong(phone.replace("-", "").replace("(", "")
+                    .replace(")", ""));
+            return true;
+        } catch (Exception e){
+            return false;
+        }
     }
 
     /**

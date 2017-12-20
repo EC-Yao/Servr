@@ -133,7 +133,7 @@
             android:layout_height="wrap_content">
 
             <android.support.design.widget.TextInputEditText
-                android:id="@+id/countryreg_edit"
+                android:id="@+id/country_reg_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
