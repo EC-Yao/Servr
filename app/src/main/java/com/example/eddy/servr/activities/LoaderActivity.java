@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
 
-public class BufferActivity extends AppCompatActivity {
+public class LoaderActivity extends AppCompatActivity {
 private TextView tv ;
 private ImageView iv ;
 

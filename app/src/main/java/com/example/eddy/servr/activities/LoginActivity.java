@@ -121,7 +121,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         tempCheatButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                LoadingActivity.servr.sendMessage("Log-in Bypassed");
+                BufferingActivity.servr.sendMessage("Log-in Bypassed");
                 startMainActivity();
             }
         });
@@ -190,7 +190,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                 //  Checking for the right phone number (rip off the one from the login
 
                                 try{
-                                    LoadingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
+                                    BufferingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
                                             user.getText().toString(), pin.getText().toString(),
                                             email.getText().toString(), phone.getText().toString(),
                                             city.getText().toString(), country.getText().toString()));
@@ -438,7 +438,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // TODO: attempt authentication against a network service.
 
             try {
-                LoadingActivity.servr.login(mEmail + ":" + mPassword);
+                BufferingActivity.servr.login(mEmail + ":" + mPassword);
             } catch (Exception e) {
                 Log.e("Log-in Error", e.getMessage() + "\n" + e.getCause());
             }

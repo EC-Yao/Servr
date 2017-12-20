@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorAccentRed1"
 
-    tools:context="com.example.eddy.servr.activities.BufferActivity">
+    tools:context="com.example.eddy.servr.activities.LoaderActivity">
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"

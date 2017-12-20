@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
 
-public class LoadingActivity extends AppCompatActivity {
+public class BufferingActivity extends AppCompatActivity {
 
     public static ServerConnection servr;
 
@@ -23,7 +23,7 @@ public class LoadingActivity extends AppCompatActivity {
     }
 
     protected void startActivity() {
-        Intent i = new Intent(this, BufferActivity.class);
+        Intent i = new Intent(this, LoaderActivity.class);
         startActivity(i);
     }
 
