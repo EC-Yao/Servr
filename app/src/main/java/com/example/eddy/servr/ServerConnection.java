@@ -2,8 +2,6 @@ package com.example.eddy.servr;
 
 import android.os.StrictMode;
 
-import com.example.eddy.servr.fragments.ProfileFragment;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
@@ -70,7 +68,7 @@ public class ServerConnection {
         try{
             //@school: 10.178.155.72
             //@home: 192.168.2.13
-            socket = new Socket("192.168.2.13", 8001);
+            socket = new Socket("10.178.155.72", 8001);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (Exception e) {
