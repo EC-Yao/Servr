@@ -18,6 +18,41 @@
 
     </style>
 
+<style name="classicTextBox" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:colorAccent">@color/white</item>
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="colorControlNormal">@color/white</item>
+    <item name="colorControlActivated">@color/white</item>
+    <item name="colorControlHighlight">@color/white</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:background">@color/white</item>
+</style>
+
+    <style name="PreferenceTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:colorAccent">@color/colorAccentRed1</item>
+        <item name="android:statusBarColor">@color/colorAccentRed2</item>
+        <item name="colorControlNormal">@color/colorAccentRed1</item>
+        <item name="colorControlActivated">@color/colorAccentRed1</item>
+        <item name="colorControlHighlight">@color/colorAccentRed1</item>
+        <item name="dialogTheme">@style/AppTheme.Dialog.Red</item>
+        <item name="alertDialogTheme">@style/AppTheme.Dialog.Alert.Red</item>
+    </style>
+
+    <!-- Red Dialog Theme -->
+    <style name="AppTheme.Dialog.Red" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorAccentRed1</item>
+        <item name="colorPrimaryDark">@color/colorAccentRed1</item>
+        <item name="colorAccent">@color/colorAccentRed1</item>
+    </style>
+
+    <!-- Red Alert Dialog Theme -->
+    <style name="AppTheme.Dialog.Alert.Red" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorAccentRed1</item>
+        <item name="colorPrimaryDark">@color/colorAccentRed1</item>
+        <item name="colorAccent">@color/colorAccentRed1</item>
+    </style>
+
     <style name="RegisterTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorControlNormal">@color/white</item>
         <item name="colorControlActivated">@color/white</item>

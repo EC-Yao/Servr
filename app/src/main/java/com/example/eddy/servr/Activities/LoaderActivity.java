@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
+
+// ???
+// Eddy Yao
+// ???
 
 public class LoaderActivity extends AppCompatActivity {
 private TextView tv ;

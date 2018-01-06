@@ -15,6 +15,10 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+// November 27th, 2017
+// Darren Liu
+// Displays currently logged in users information
+
 public class ProfileFragment extends Fragment{
 
     private View rootView;
@@ -35,9 +39,13 @@ public class ProfileFragment extends Fragment{
         TextView phone = rootView.findViewById(R.id.phone);
         TextView location = rootView.findViewById(R.id.location);
 
-        username.setText(ServerConnection.user.get(1));
-        email.setText(ServerConnection.user.get(3));
-        phone.setText(ServerConnection.user.get(4));
-        location.setText(String.format("%s, %s", ServerConnection.user.get(5), ServerConnection.user.get(6)));
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+//        username.setText(ServerConnection.user.get(1));
+//        email.setText(ServerConnection.user.get(3));
+//        phone.setText(ServerConnection.user.get(4));
+//        location.setText(String.format("%s, %s", ServerConnection.user.get(5), ServerConnection.user.get(6)));
+
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     }
 }

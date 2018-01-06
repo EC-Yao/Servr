@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,6 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
+
+// November 20th, 2017 :) bday
+// Darren Liu
+// An activity displaying specific information about the clicked service item
 
 public class ServiceItemActivity extends AppCompatActivity {
 
@@ -28,10 +32,12 @@ public class ServiceItemActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(toolbarName);
         }
 
-        FloatingActionButton fab = findViewById(R.id.fab);
+        //Sets up floating action button
+        FloatingActionButton fab = findViewById(R.id.ServiceFAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
             Snackbar.make(view, "Wow!", Snackbar.LENGTH_SHORT)
                    .setAction("Action", null).show();
@@ -45,7 +51,7 @@ public class ServiceItemActivity extends AppCompatActivity {
         });
     }
 
-    //launch this when creating
+    //Updates the text of the activity
     public void updateBodyText(String bodyText){
         TextView bodyTextView = findViewById(R.id.serviceLargeTextView);
         bodyTextView.setText(bodyText);

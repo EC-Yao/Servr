@@ -12,7 +12,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:id="@+id/login_layout"
-    tools:context="com.example.eddy.servr.activities.LoginActivity">
+    tools:context="com.example.eddy.servr.Activities.LoginActivity">
 
     <!-- Login progress -->
 
@@ -64,6 +64,7 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:imeOptions="actionNext"
                     />
                 <!--
                    android:theme="@style/MyEditTextTheme"
@@ -82,10 +83,10 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionLabel="@+id/login"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberPassword"
                     android:maxLines="1"
-                    android:singleLine="true"/>
+                    android:singleLine="true" />
 
             </android.support.design.widget.TextInputLayout>
 

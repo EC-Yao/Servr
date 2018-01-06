@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -45,17 +45,15 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-/**
- * A login screen that offers login via email/password.
- */
+// ???
+// Eddy Yao
+// ???
+
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     private Context mContext;
-    private Activity mActivity;
-
     private Button registerButton;
-    private LinearLayout mCoordinatorLayout;
-
+    private LinearLayout mLinearLayout;
     private PopupWindow mPopupWindow;
 
     /**
@@ -75,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
      */
     private UserLoginTask mAuthTask = null;
 
-    // UI references.
+    // UI references
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -97,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
+        //initializes the password text field
         mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -109,6 +108,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        //initializes the email text field
         Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -117,22 +117,26 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
+        //temporary button to bypass the login system
         Button tempCheatButton = findViewById(R.id.cheat_button);
         tempCheatButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                BufferingActivity.servr.sendMessage("Log-in Bypassed");
+
+                //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+                //BufferingActivity.servr.sendMessage("Log-in Bypassed");
+
+                //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
                 startMainActivity();
             }
         });
 //start
 
         mContext = getApplicationContext();
-        //mActivity = MainActivity.this;
+        mLinearLayout = findViewById(R.id.login_layout);
         registerButton = findViewById(R.id.register_button);
-        mCoordinatorLayout = findViewById(R.id.login_layout);
-
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
@@ -145,10 +149,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if(customView == null){
                     System.out.println("LOGIN ACTIVITY: customView is null");
                 }else{
-                    //intializes the popup window
+                    //initializes the popup window
                     mPopupWindow = new PopupWindow(customView, 650, 1200);
 
-                    //set an elavation value for the popup window
+                    //set an elevation value for the popup window
                         mPopupWindow.setElevation(5.0f);
 
                     //creates the close button
@@ -164,14 +168,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     mPopupWindow.update();
 
                     //declaring editTexts
-                    user = findViewById(R.id.user_reg_edit);
-                    pin = findViewById(R.id.pin_reg_edit);
-                    email = findViewById(R.id.email_reg_edit);
-                    phone = findViewById(R.id.phone_reg_edit);
-                    city = findViewById(R.id.city_reg_edit);
-                    country = findViewById(R.id.country_reg_edit);
-
-                    System.out.println("buttons made");
 
                     //Saving the users submissions
                     Button submit = customView.findViewById(R.id.sumbit_reg_button);
@@ -229,9 +225,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
                         //show the pop up window at the center of the layout
-                        mCoordinatorLayout.post(new Runnable() {
+                        mLinearLayout.post(new Runnable() {
                             public void run() {
-                                mPopupWindow.showAtLocation(mCoordinatorLayout, Gravity.CENTER, 0, 0);
+                                mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER, 0, 0);
                             }
                         });
                     }
