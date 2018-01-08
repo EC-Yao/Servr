@@ -2,8 +2,6 @@ package com.example.eddy.servr;
 
 import android.os.StrictMode;
 
-import com.example.eddy.servr.fragments.ProfileFragment;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;

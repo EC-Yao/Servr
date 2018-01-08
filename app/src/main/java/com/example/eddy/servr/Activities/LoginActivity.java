@@ -132,7 +132,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 startMainActivity();
             }
         });
-//start
 
         mContext = getApplicationContext();
         mLinearLayout = findViewById(R.id.login_layout);
