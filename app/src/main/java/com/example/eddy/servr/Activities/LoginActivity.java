@@ -499,19 +499,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             showProgress(false);
         }
     }
+/**
+    public void showRegisterScreen(View anchorView){
+        View popupView = getLayoutInflater().inflate(R.layout.fragment_popup, null);
+        PopupWindow popupWindow = new PopupWindow(popupView, Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
+        TextView tv = popupView.findViewById(R.id.popupTextView);
+        tv.setText(R.string.placeholder_email);
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
 
-//    public void showRegisterScreen(View anchorView){
-//        View popupView = getLayoutInflater().inflate(R.layout.fragment_popup, null);
-//        PopupWindow popupWindow = new PopupWindow(popupView, Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
-//        TextView tv = popupView.findViewById(R.id.popupTextView);
-//        tv.setText(R.string.placeholder_email);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable());
-//
-//        popupWindow.setFocusable(true);
-//        int location[] = new int[2];
-//        anchorView.getLocationOnScreen(location);
-//        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0,0);
-//        //popupWindow.showAtLocation(anchorView, Gravity.NO_GRAVITY, location[0], location[1] + anchorView.getHeight());
-//    }
+        popupWindow.setFocusable(true);
+        int location[] = new int[2];
+        anchorView.getLocationOnScreen(location);
+        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0,0);
+        popupWindow.showAtLocation(anchorView, Gravity.NO_GRAVITY, location[0], location[1] + anchorView.getHeight());
+    }*/
 }
 

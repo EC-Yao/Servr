@@ -24,7 +24,7 @@ public class BufferingActivity extends AppCompatActivity {
 
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-        //connectServer();
+        connectServer();
 
         //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 

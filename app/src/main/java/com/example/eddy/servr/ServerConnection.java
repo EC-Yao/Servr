@@ -3,6 +3,7 @@ package com.example.eddy.servr;
 import android.os.StrictMode;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -15,29 +16,19 @@ public class ServerConnection {
     private static PrintWriter out;
     private static BufferedReader in;
     private static String temp;
-    public static ArrayList<String> user;
 
-    private static final String input = "[[1, 1, Alpha Tester, Testing for alpha, $1.99], [2, 1, Alpha Alpha Tester, Testing for alpha alpha, $11.99], [4, 3, Cheesecake Eater, Eating cheesecake professionally, $2.99]]";
     private static String output;
     private static ArrayList<ArrayList<String>> printedOutput;
 
+    public static ArrayList<String> user;
+    public static ArrayList<ArrayList<String>> userServices;
+    public static ArrayList<ArrayList<String>> streamServices;
 
     public ServerConnection(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        sendMessage("Ping");
 
-        System.out.println(getNestedArray(input));
-    }
-
-    public void sendMessage(String message){
-        listenSocket();
-        try {
-            out.println(message);
-            System.out.println(in.readLine());
-        } catch (Exception e) {
-            System.out.println(Arrays.toString(e.getStackTrace()));
-        }
+        searchServices("Tester");
     }
 
     public void register(String user){
@@ -64,10 +55,34 @@ public class ServerConnection {
                 temp = temp.replace(" ", "");
                 temp = temp.replace("]", "");
                 user = new ArrayList<>(Arrays.asList(temp.split(",")));
+                getUserServices(Integer.parseInt(user.get(0)));
             }
-            System.out.println(user);
         } catch (Exception e) {
             System.out.println(Arrays.toString(e.getStackTrace()));
+        }
+    }
+
+    public void getUserServices(int userID){
+        listenSocket();
+        try {
+            out.println("personal_services");
+            out.println(userID);
+            userServices = getNestedArray(in.readLine());
+            System.out.println(userServices);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void searchServices(String searchQuery){
+        listenSocket();
+        try{
+            out.println("search_services");
+            out.println(searchQuery);
+            streamServices = getNestedArray(in.readLine());
+            System.out.println(streamServices);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -75,7 +90,7 @@ public class ServerConnection {
         try{
             //@school: 10.178.155.72
             //@home: 192.168.2.13
-            socket = new Socket("192.168.2.13", 8001);
+            socket = new Socket("10.178.155.72", 8001);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (Exception e) {
