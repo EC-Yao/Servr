@@ -1,4 +1,4 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr;
 
 import android.content.Intent;
 import android.support.v7.widget.CardView;
@@ -7,7 +7,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import com.example.eddy.servr.R;
+
+import com.example.eddy.servr.Activities.ServiceItemActivity;
+
+// November 13th, 2017
+// Darren Liu
+// Class to create the card view
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private String[] mDataset;

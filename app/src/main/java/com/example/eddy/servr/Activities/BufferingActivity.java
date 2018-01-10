@@ -1,10 +1,17 @@
-package com.example.eddy.servr.activities;
+package com.example.eddy.servr.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
+
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
+
+// November 30th, 2017
+// Darren Liu
+// Loading screen for the application
 
 public class BufferingActivity extends AppCompatActivity {
 
@@ -14,10 +21,18 @@ public class BufferingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-        connectServer();
+
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+        //connectServer();
+
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
         startActivity();
     }
 
+    //Establishes connection with the server
     protected void connectServer(){
         servr = new ServerConnection();
     }

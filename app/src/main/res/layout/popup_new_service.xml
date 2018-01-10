@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_custom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="2dp"
+    android:background="@color/colorAccentRed1">
+
+    <ImageButton
+        android:contentDescription="@string/close_button"
+        android:id="@+id/button_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_white_24dp"
+        android:layout_alignParentEnd="true"
+        android:background="@null"
+        android:layout_toEndOf="@id/reg_linear_layout" />
+
+    <LinearLayout
+        android:id="@+id/reg_linear_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingEnd="14sp"
+        android:paddingStart="25sp"
+        android:theme="@style/MyEditTextTheme">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:paddingTop="25sp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/title_popup_new_service"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="20sp"
+            android:paddingBottom="5sp"
+            android:text="@string/new_service_description"
+            android:textColor="@color/colorPrimary" />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/user_service_title_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="15sp"
+                android:padding="5sp"
+                android:inputType="textPersonName"
+                android:hint=""
+                android:imeOptions="actionNext"
+                android:ellipsize="end"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/user_service_price_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="15sp"
+                android:padding="5sp"
+                android:hint="@string/new_service_price_hint"
+                android:inputType="numberDecimal"
+                android:imeOptions="actionNext"
+                android:ellipsize="end"/>
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/user_service_description_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/new_service_description_hint"
+                android:inputType="textMultiLine"
+                android:scrollHorizontally="false"
+                android:lines="8"
+                android:ellipsize="end"
+                android:padding="5sp"
+                android:textSize="15sp"
+                android:maxLines="8"
+                android:imeOptions="actionDone"
+                android:gravity="top|start"
+                android:textColor="@color/black"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+        <Button
+            android:id="@+id/submit_new_button"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:text="@string/create_button" />
+
+    </LinearLayout>
+
+</RelativeLayout>
