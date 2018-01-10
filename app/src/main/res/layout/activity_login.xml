@@ -64,6 +64,7 @@
                     android:inputType="textEmailAddress"
                     android:maxLines="1"
                     android:singleLine="true"
+                    android:imeOptions="actionNext"
                     />
                 <!--
                    android:theme="@style/MyEditTextTheme"
@@ -82,8 +83,8 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
                     android:imeActionLabel="@+id/login"
-                    android:imeOptions="actionUnspecified"
-                    android:inputType="textPassword"
+                    android:imeOptions="actionDone"
+                    android:inputType="numberPassword"
                     android:maxLines="1"
                     android:singleLine="true"/>
 
