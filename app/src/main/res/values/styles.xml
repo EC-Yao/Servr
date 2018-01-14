@@ -1,53 +1,122 @@
 <resources>
 
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!-- Gets rid of the search icon -->
+        <item name="searchIcon">@drawable/ic_search_white_24dp</item>
+        <!-- Gets rid of the "underline" in the text -->
+        <item name="queryBackground">@color/white</item>
+        <!-- Gets rid of the search icon when the SearchView is expanded -->
+        <item name="searchHintIcon">@null</item>
+        <!-- The hint text that appears when the user has not typed anything -->
+        <item name="queryHint">"Search here"</item>
+    </style>
+
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:colorAccent">@color/colorAccentRed1</item>
+        <item name="android:statusBarColor">@color/colorAccentRed2</item>
+
+    </style>
+
+<style name="classicTextBox" parent="Theme.AppCompat.Light.NoActionBar">
+    <item name="android:colorAccent">@color/white</item>
+    <item name="android:statusBarColor">@color/white</item>
+    <item name="colorControlNormal">@color/white</item>
+    <item name="colorControlActivated">@color/white</item>
+    <item name="colorControlHighlight">@color/white</item>
+    <item name="android:textColor">@color/black</item>
+    <item name="android:background">@color/white</item>
+</style>
+
+    <style name="PreferenceTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+        <item name="android:colorAccent">@color/colorAccentRed1</item>
+        <item name="android:statusBarColor">@color/colorAccentRed2</item>
+        <item name="colorControlNormal">@color/colorAccentRed1</item>
+        <item name="colorControlActivated">@color/colorAccentRed1</item>
+        <item name="colorControlHighlight">@color/colorAccentRed1</item>
+        <item name="dialogTheme">@style/AppTheme.Dialog.Red</item>
+        <item name="alertDialogTheme">@style/AppTheme.Dialog.Alert.Red</item>
+    </style>
+
+    <!-- Red Dialog Theme -->
+    <style name="AppTheme.Dialog.Red" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorPrimary">@color/colorAccentRed1</item>
+        <item name="colorPrimaryDark">@color/colorAccentRed1</item>
+        <item name="colorAccent">@color/colorAccentRed1</item>
+    </style>
+
+    <!-- Red Alert Dialog Theme -->
+    <style name="AppTheme.Dialog.Alert.Red" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorPrimary">@color/colorAccentRed1</item>
+        <item name="colorPrimaryDark">@color/colorAccentRed1</item>
+        <item name="colorAccent">@color/colorAccentRed1</item>
+    </style>
+
+    <style name="RegisterTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/white</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
+
+    <style name="MyEditTextTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/colorAccentRed1</item>
+        <item name="colorControlHighlight">@color/black</item>
     </style>
 
     <!-- Toolbar Theme -->
-    <style name="ToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="StatusBarStyle" parent="Theme.AppCompat.Light.NoActionBar">
 
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/statusBarColor</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
 
     </style>
+
+    <!-- General Theme -->
+    <style name="GeneralStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:titleTextColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/colorAccentRed1</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
+    </style>
+
 
     <!-- TabLayout Theme -->
     <style name="TabLayoutStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:textColor">@color/white</item>
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/statusBarColor</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>
 
     <!-- WhiteLayout Theme -->
     <style name="WhiteLayoutStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/colorPrimary</item>
         <item name="android:background">@color/white</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/colorPrimary</item>
         <item name="android:overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>
 
 
-
-        <!-- Custom TOolbar Theme. -->
+    <!-- Custom TOolbar Theme. -->
     <style name="customToolbarStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimary</item>
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@color/statusBarColor</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
     </style>
 
     <!-- Custom PopUp Theme. -->
     <style name="PopUpStyle" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:background">@color/colorPrimary</item>
+        <item name="android:background">@color/statusBarColor</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:overlapAnchor">false</item>
         <item name="android:dropDownVerticalOffset">-4dp</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
-        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:statusBarColor">@color/statusBarColor</item>
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

@@ -4,23 +4,87 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_login">Log In</string>
+    <string name="search">search</string>
+    <string name="register_button">Register</string>
+    <string name="create_button">create</string>
 
-    <!-- Strings related to login -->
+    <!-- Strings related to login and registering -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_password">PIN</string>
+
+    <string name="action_sign_in">Sign in</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_invalid_password">This PIN is invalid - Must be a 4-digit integer</string>
+    <string name="error_incorrect_credentials">These credentials do not exist</string>
     <string name="error_field_required">This field is required</string>
-    <string name="permission_rationale">"Contacts permissions are needed for providing email
-        completions."
-    </string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="server_url">http://posttestserver.com/post.php</string>
-  
+
+    <string name="register_title">Registration</string>
+    <string name="username_hint_edit_text">Username</string>
+    <string name="pin_hint_edit_text">PIN</string>
+    <string name="email_hint_edit_text">Email</string>
+    <string name="phone_hint_edit_text">Phone Number</string>
+    <string name="city_hint_edit_text">City</string>
+    <string name="country_hint_edit_text">Country</string>
+
+    <string name="new_service_title_hint">Title of the Service</string>
+    <string name="new_service_price_hint">Enter Price</string>
+    <string name="new_service_description_hint">Describe the service in detail.</string>
+    <string name="new_service_description">Enter Information Below</string>
+
+    <!-- Placeholder Strings-->
+    <string name="default_contact_name">Alexander Smith</string>
+    <string name="profile_column_one_title">Reputation</string>
+    <string name="profile_column_two_title">Trades</string>
+    <string name="profile_column_three_title">Last Seen</string>
+
+    <string name="profile_column_one_body">89.2%</string>
+    <string name="profile_column_two_body">273</string>
+    <string name="profile_column_three_body">34m</string>
+
+    <string name="placeholder_email">alex.smith@gmail.com</string>
+    <string name="placeholder_phone_number">+(613)–828–2912</string>
+    <string name="placeholder_location">Kanata, Ontario</string>
+
+    <string name="default_item_description">Default description for an item</string>
+
+    <string name="large_text">
+        "Material is the metaphor.\n\n"
+
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+        "Surfaces and edges of the material provide visual cues that are grounded in reality. The "
+        "use of familiar tactile attributes helps users quickly understand affordances. Yet the "
+        "flexibility of the material creates new affordances that supercede those in the physical "
+        "world, without breaking the rules of physics.\n"
+        "The fundamentals of light, surface, and movement are key to conveying how objects move, "
+        "interact, and exist in space and in relation to each other. Realistic lighting shows "
+        "seams, divides space, and indicates moving parts.\n\n"
+    </string>
+
     <!-- Strings related to UI -->
+    <string name="register_popup">Please fill in the information\nbelow to register.</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_settings">SettingsActivity</string>
     <string name="settings_title">Preferences</string>
     <string name="app_title">SERVR</string>
+    <string name="title_activity_scrolling">ScrollingActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="bypass_login">Bypass Login</string>
+    <string name="search_title">Search</string>
+    <string name="stream_title">Stream</string>
+    <string name="profile_title">Profile</string>
+    <string name="title_activity_buffer">BufferActivity</string>
+    <string name="title_popup_new_service">New Service</string>
+
+    <!-- Content Description -->
+    <string name="default_contact_image">Default Contact Photo</string>
+    <string name="logo_description">A logo for the application Servr</string>
+    <string name="close_button">A button for closing pop up tabs</string>
+    <string name="error_invalid_phone">This phone number is invalid</string>
+    <string name="title_activity_setting">SettingActivity</string>
+
 </resources>

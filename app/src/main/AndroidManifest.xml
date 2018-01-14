@@ -17,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.LoadingActivity"
+            android:name=".Activities.BufferingActivity"
             android:label="@string/app_name"
             android:noHistory="true">
             <intent-filter>
@@ -27,12 +27,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:noHistory="true" />
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".Activities.MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.ServiceItemActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/GeneralStyle" />
+        <activity
+            android:name=".Activities.LoaderActivity"
+            android:label="@string/title_activity_buffer"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Activities.SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/PreferenceTheme" />
     </application>
 
 </manifest>

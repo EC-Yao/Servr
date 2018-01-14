@@ -1,0 +1,18 @@
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"  >
+
+    <EditTextPreference
+        android:defaultValue="Default value"
+        android:key="edit_text_preference_1"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="Change your password haha"
+        android:title="Change Password" />
+    <EditTextPreference
+        android:defaultValue="Default value"
+        android:key="edit_text_preference_2"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:summary="dont messs up xd"
+        android:title="Email" />
+</PreferenceScreen>
