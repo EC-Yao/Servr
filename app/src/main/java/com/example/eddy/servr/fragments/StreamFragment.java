@@ -23,6 +23,9 @@ import android.widget.PopupWindow;
 
 import com.example.eddy.servr.MyAdapter;
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
+
+import java.util.Arrays;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
@@ -50,10 +53,7 @@ public class StreamFragment extends Fragment{
 
         RecyclerView rv = rootView.findViewById(R.id.rv_recycler_view);
         rv.setHasFixedSize(true);
-        MyAdapter adapter = new MyAdapter(new String[]{"Test Case 0",
-                  "Test Case 1", "Test Case 2", "Test Case 3", "Test Case 4", "Test Case 5",
-                  "Test Case 6", "Test Case 7", "Test Case 8", "Test Case 9", "Test Case 10",
-                  "Test Case 11", "Test Case 12", "Test Case 13"});
+        MyAdapter adapter = new MyAdapter(ServerConnection.streamServices);
         rv.setAdapter(adapter);
 
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());

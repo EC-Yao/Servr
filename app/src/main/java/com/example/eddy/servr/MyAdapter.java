@@ -10,29 +10,33 @@ import android.widget.TextView;
 
 import com.example.eddy.servr.Activities.ServiceItemActivity;
 
+import java.util.ArrayList;
+
 // November 13th, 2017
 // Darren Liu
 // Class to create the card view
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private String[] mDataset;
+    private ArrayList<ArrayList<String>> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     static class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
-        TextView mTextView;
+        TextView serviceTitle;
+        TextView serviceDescription;
         MyViewHolder(View v) {
             super(v);
 
             mCardView = v.findViewById(R.id.card_view);
-            mTextView = v.findViewById(R.id.tv_text);
+            serviceTitle = v.findViewById(R.id.tv_text);
+            serviceDescription = v.findViewById(R.id.tv_description);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] myDataset) {
+    public MyAdapter(ArrayList<ArrayList<String>> myDataset) {
         mDataset = myDataset;
     }
 
@@ -48,12 +52,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.mTextView.setText(mDataset[position]);
+        holder.serviceTitle.setText(mDataset.get(position).get(2));
+        holder.serviceDescription.setText(mDataset.get(position).get(3));
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ServiceItemActivity.toolbarName = mDataset[position];
+                ServiceItemActivity.toolbarName = mDataset.get(position).get(2);
+                ServiceItemActivity.description = mDataset.get(position).get(3);
+                ServiceItemActivity.price = mDataset.get(position).get(4);
                 Intent i = new Intent(view.getContext(), ServiceItemActivity.class);
                 view.getContext().startActivity(i);
             }
@@ -62,6 +68,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 }

@@ -11,14 +11,14 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/app_bar_height"
+        android:layout_height="209dp"
         android:fitsSystemWindows="true"
         android:theme="@style/GeneralStyle">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="178dp"
             android:fitsSystemWindows="true"
             android:theme="@style/WhiteLayoutStyle"
 
@@ -35,13 +35,25 @@
                 app:popupTheme="@style/GeneralStyle" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_service_item_scrolling" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/ServiceFAB"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/fab_margin"
 

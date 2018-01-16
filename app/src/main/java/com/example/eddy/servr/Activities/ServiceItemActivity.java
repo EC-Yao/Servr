@@ -18,6 +18,8 @@ public class ServiceItemActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     public static String toolbarName = "Default";
+    public static String description = "Default";
+    public static String price = "$0.00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,18 +44,17 @@ public class ServiceItemActivity extends AppCompatActivity {
             Snackbar.make(view, "Wow!", Snackbar.LENGTH_SHORT)
                    .setAction("Action", null).show();
 
-            updateBodyText( "It's beginning to feel like a lot Christmas," +
-                    "Everywhere you go;" +
-                    "Take a look at the five and ten," +
-                    "It's glistening once again," +
-                    "With candy canes and silver lanes aglow!");
             }
         });
+
+        updateText();
     }
 
     //Updates the text of the activity
-    public void updateBodyText(String bodyText){
+    public void updateText(){
         TextView bodyTextView = findViewById(R.id.serviceLargeTextView);
-        bodyTextView.setText(bodyText);
+        TextView priceView = findViewById(R.id.price);
+        bodyTextView.setText(description);
+        priceView.setText(price);
     }
 }
