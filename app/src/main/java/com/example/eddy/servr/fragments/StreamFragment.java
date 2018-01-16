@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
+import com.example.eddy.servr.Activities.BufferingActivity;
 import com.example.eddy.servr.MyAdapter;
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
@@ -119,6 +120,31 @@ public class StreamFragment extends Fragment{
 
                         //Saving the users submissions
                         Button submit = customView.findViewById(R.id.submit_new_button);
+
+                        submit.setOnClickListener(new View.OnClickListener(){
+                            @Override
+                            public void onClick(View view) {
+                                Boolean validRegistration = true;
+
+                                TextInputEditText title = customView.findViewById(R.id.user_service_title_edit);
+                                TextInputEditText price = customView.findViewById(R.id.user_service_price_edit);
+                                TextInputEditText description = customView.findViewById(R.id.user_service_description_edit);
+
+                                String serviceTitle = title.getText().toString();
+                                String servicePrice = price.getText().toString();
+                                String serviceDescription = description.getText().toString();
+
+                                if (validRegistration){
+                                    try{
+                                        BufferingActivity.servr.addServices(String.format("%s,%s,%s,%s",
+                                                ServerConnection.user.get(0), serviceTitle,
+                                                serviceDescription, servicePrice));
+                                    } catch (Exception e){
+                                        System.out.println(e.getMessage());
+                                    }
+                                }
+                            }
+                        });
 
                         //stops the keyboard from opening on startup
                         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
