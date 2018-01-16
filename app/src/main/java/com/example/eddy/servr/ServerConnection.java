@@ -29,6 +29,7 @@ public class ServerConnection {
         StrictMode.setThreadPolicy(policy);
 
         searchServices("Tester");
+        getServiceStream();
     }
 
     public void register(String user){
@@ -74,6 +75,17 @@ public class ServerConnection {
         }
     }
 
+    public void addServices(String service){
+        listenSocket();
+        try{
+            out.println("create_service");
+            out.println(service);
+            System.out.println("Successfully added service: " + service);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public void searchServices(String searchQuery){
         listenSocket();
         try{
@@ -86,11 +98,22 @@ public class ServerConnection {
         }
     }
 
+    public void getServiceStream(){
+        listenSocket();
+        try{
+            out.println("stream_service");
+            streamServices = getNestedArray(in.readLine());
+            System.out.println(streamServices);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void listenSocket(){
         try{
             //@school: 10.178.155.72
             //@home: 192.168.2.13
-            socket = new Socket("10.178.155.72", 8001);
+            socket = new Socket("192.168.2.13", 8001);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (Exception e) {

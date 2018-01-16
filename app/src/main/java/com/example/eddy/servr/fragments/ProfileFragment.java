@@ -39,13 +39,9 @@ public class ProfileFragment extends Fragment{
         TextView phone = rootView.findViewById(R.id.phone);
         TextView location = rootView.findViewById(R.id.location);
 
-        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-//        username.setText(ServerConnection.user.get(1));
-//        email.setText(ServerConnection.user.get(3));
-//        phone.setText(ServerConnection.user.get(4));
-//        location.setText(String.format("%s, %s", ServerConnection.user.get(5), ServerConnection.user.get(6)));
-
-        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+        username.setText(ServerConnection.user.get(1));
+        email.setText(ServerConnection.user.get(3));
+        phone.setText(ServerConnection.user.get(4));
+        location.setText(String.format("%s, %s", ServerConnection.user.get(5), ServerConnection.user.get(6)));
     }
 }
