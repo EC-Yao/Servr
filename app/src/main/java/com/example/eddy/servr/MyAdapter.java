@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.eddy.servr.Activities.BufferingActivity;
 import com.example.eddy.servr.Activities.ServiceItemActivity;
 
 import java.util.ArrayList;
@@ -60,6 +61,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 ServiceItemActivity.toolbarName = mDataset.get(position).get(2);
                 ServiceItemActivity.description = mDataset.get(position).get(3);
                 ServiceItemActivity.price = mDataset.get(position).get(4);
+                ServiceItemActivity.user = BufferingActivity.servr.getUser(Integer.parseInt(mDataset.get(position).get(1).replaceAll(" ", "")));
                 Intent i = new Intent(view.getContext(), ServiceItemActivity.class);
                 view.getContext().startActivity(i);
             }
