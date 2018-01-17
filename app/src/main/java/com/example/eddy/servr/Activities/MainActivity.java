@@ -21,6 +21,7 @@ import android.view.View;
 
 
 import com.example.eddy.servr.R;
+import com.example.eddy.servr.ServerConnection;
 import com.example.eddy.servr.fragments.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     TabLayout myTabs;
     ViewPager myPage;
+    ProfileFragment profileFragment;
+    StreamFragment streamFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +101,8 @@ public class MainActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //On submit
+                BufferingActivity.servr.searchServices(query);
+                streamFragment.refreshView();
                 return false;
             }
 
@@ -133,8 +137,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setUpViewPager (ViewPager viewPage){
         myViewPageAdapter adapter =new myViewPageAdapter(getSupportFragmentManager());
-        adapter.addFragmentPage(new StreamFragment(), "Stream");
-        adapter.addFragmentPage(new ProfileFragment(), "Profile");
+
+        streamFragment = new StreamFragment();
+        profileFragment = new ProfileFragment();
+
+        adapter.addFragmentPage(streamFragment, "Stream");
+        adapter.addFragmentPage(profileFragment, "Profile");
 
         viewPage.setAdapter(adapter);
     }

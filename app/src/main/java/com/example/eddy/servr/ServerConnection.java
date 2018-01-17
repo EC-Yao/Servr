@@ -112,7 +112,7 @@ public class ServerConnection {
         try{
             //@school: 10.178.155.72
             //@home: 192.168.2.13
-            socket = new Socket("192.168.2.13", 8001);
+            socket = new Socket("10.0.9.34", 8001);
             out = new PrintWriter(socket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (Exception e) {

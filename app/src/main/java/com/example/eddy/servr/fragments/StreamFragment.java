@@ -139,7 +139,7 @@ public class StreamFragment extends Fragment{
                                         BufferingActivity.servr.addServices(String.format("%s,%s,%s,%s",
                                                 ServerConnection.user.get(0), serviceTitle,
                                                 serviceDescription, servicePrice));
-                                    } catch (Exception e){
+                                    } catch (Exception e) {
                                         System.out.println(e.getMessage());
                                     }
                                 }
@@ -162,5 +162,9 @@ public class StreamFragment extends Fragment{
         }
 
         return rootView;
+    }
+
+    public void refreshView(){
+        getFragmentManager().beginTransaction().detach(this).attach(this).commit();
     }
 }
