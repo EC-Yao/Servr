@@ -37,17 +37,6 @@
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
-        <TextView
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="sans-serif"
-            android:text="TextView"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_service_item_scrolling" />

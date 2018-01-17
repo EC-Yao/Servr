@@ -108,8 +108,13 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-
-                //add text change stuff here
+                if(newText.equals("")){
+                    BufferingActivity.servr.getServiceStream();
+                    streamFragment.refreshView();
+                } else {
+                    BufferingActivity.servr.searchServices(newText);
+                    streamFragment.refreshView();
+                }
                 return false;
             }
         });

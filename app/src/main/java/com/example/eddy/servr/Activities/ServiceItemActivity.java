@@ -113,10 +113,7 @@ public class ServiceItemActivity extends AppCompatActivity {
     //Updates the text of the activity
     public void updateText(){
         TextView bodyTextView = findViewById(R.id.serviceLargeTextView);
-        TextView priceView = findViewById(R.id.price);
 
-
-        bodyTextView.setText(description);
-        priceView.setText(price);
+        bodyTextView.setText(description + "\n\nPrice: " + price);
     }
 }
