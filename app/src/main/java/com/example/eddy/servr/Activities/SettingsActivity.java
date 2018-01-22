@@ -6,6 +6,12 @@ import android.os.Bundle;
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.fragments.SettingsFragment;
 
+/** January 2, 2017
+ *  Darren Liu
+ *
+ *      Displays currently logged in users information
+ */
+
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

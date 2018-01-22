@@ -26,13 +26,11 @@ import com.example.eddy.servr.fragments.*;
 import java.util.ArrayList;
 import java.util.List;
 
-// November 13th, 2017
-// Darren Liu
-// Main activity acting as a home page and housing different fragments
-
-/*  TO-DO
-        Create a place to show the username of the person creating the service
-
+/**
+ *  November 13th, 2017
+ *  Darren Liu
+ *
+ *      Main activity acting as a home page and housing different fragments
  */
 
 public class MainActivity extends AppCompatActivity {

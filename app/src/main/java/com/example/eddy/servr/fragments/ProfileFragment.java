@@ -15,9 +15,12 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-// November 27th, 2017
-// Darren Liu
-// Displays currently logged in users information
+/** November 27th, 2017
+ *  Eddy Yao
+ *
+ *      Displays currently logged in users information
+ */
+
 
 public class ProfileFragment extends Fragment{
 

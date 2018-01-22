@@ -9,14 +9,21 @@ import android.support.v7.preference.PreferenceManager;
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;
 
-// November 30th, 2017
-// Darren Liu
-// Loading screen for the application
+/**
+ *  November 30th, 2017
+ *  Eddy Yao
+ *
+ *      Launch activity for the application - This activity will initiate everything required and
+ * essentially manage any background tasks that need to be done before the app starts
+ */
+
 
 public class BufferingActivity extends AppCompatActivity {
 
+    // Public server connection to be used across the project
     public static ServerConnection servr;
 
+    // Instancing UI and setting connection to server
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,17 +38,9 @@ public class BufferingActivity extends AppCompatActivity {
         servr = new ServerConnection();
     }
 
+    // Launches loading screen
     protected void startActivity() {
         Intent i = new Intent(this, LoaderActivity.class);
         startActivity(i);
-    }
-
-    protected void onPause() {
-        super.onPause();
-    }
-
-    protected void onResume() {
-        super.onResume();
-
     }
 }

@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.v7.preference.PreferenceFragmentCompat;
 import com.example.eddy.servr.R;
 
-// January 2nd, 2018
-// Darren Liu
-//
+/** January 2, 2018
+ *  Darren Liu
+ *
+ *      Displays currently logged in users information
+ */
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override

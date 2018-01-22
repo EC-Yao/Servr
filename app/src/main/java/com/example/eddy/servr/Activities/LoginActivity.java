@@ -45,9 +45,11 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-// ???
-// Eddy Yao
-// ???
+/** October 25, 2017
+ *  Eddy Yao
+ *
+ *
+*/
 
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 

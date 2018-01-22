@@ -30,9 +30,11 @@ import java.util.Arrays;
 
 import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
-// November 13th, 2017
-// Darren Liu
-// Fragment housing all the service boxes  
+/** November 13, 2017
+ *  Darren Liu
+ *
+ *      Displays currently logged in users information
+ */
 
 public class StreamFragment extends Fragment{
 

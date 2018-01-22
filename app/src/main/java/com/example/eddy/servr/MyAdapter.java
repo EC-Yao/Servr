@@ -13,9 +13,11 @@ import com.example.eddy.servr.Activities.ServiceItemActivity;
 
 import java.util.ArrayList;
 
-// November 13th, 2017
-// Darren Liu
-// Class to create the card view
+/** November 13, 2017
+ *  Darren Liu
+ *
+ *      Class to create card view
+ */
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     private ArrayList<ArrayList<String>> mDataset;

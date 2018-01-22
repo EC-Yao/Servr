@@ -6,13 +6,13 @@
         android:key="edit_text_preference_1"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:summary="Change your password haha"
+        android:summary="Change your password"
         android:title="Change Password" />
     <EditTextPreference
         android:defaultValue="Default value"
         android:key="edit_text_preference_2"
         android:selectAllOnFocus="true"
         android:singleLine="true"
-        android:summary="dont messs up xd"
+        android:summary="Change your Email (NOTE This changes your login email)"
         android:title="Email" />
 </PreferenceScreen>

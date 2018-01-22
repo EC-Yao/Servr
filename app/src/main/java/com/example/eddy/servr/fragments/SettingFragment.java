@@ -4,6 +4,12 @@ import android.os.Bundle;
 import android.preference.PreferenceFragment;
 import com.example.eddy.servr.R;
 
+/** November 27th, 2017
+ *  Eddy Yao
+ *
+ *      Displays currently logged in users information
+ */
+
 public class SettingFragment extends PreferenceFragment {
 
     @Override

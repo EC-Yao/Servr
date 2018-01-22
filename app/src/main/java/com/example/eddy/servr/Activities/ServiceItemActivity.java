@@ -23,9 +23,13 @@ import com.example.eddy.servr.R;
 
 import java.util.ArrayList;
 
-// November 20th, 2017 :) bday
-// Darren Liu
-// An activity displaying specific information about the clicked service item
+/**
+ *  November 20th, 2017 :) bday - wait that's not my bday - ey
+ *  Darren Liu
+ *
+ *      An activity displaying specific information about the clicked service item
+ */
+
 
 public class ServiceItemActivity extends AppCompatActivity {
 

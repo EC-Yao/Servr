@@ -9,24 +9,33 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
 
-// ???
-// Eddy Yao
-// ???
+/**
+ *  November 31, 2017
+ *  Darren Liu
+ *
+ *      Loading activity to display animation upon app launch -
+ */
 
 public class LoaderActivity extends AppCompatActivity {
 private TextView tv ;
 private ImageView iv ;
 
+    // Instances UI and plays animation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Set parameters
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buffer);
         tv = findViewById(R.id.bufferText);
         iv = findViewById(R.id.bufferImage);
+
+        // Begin animation
         Animation loadingAnim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         tv.startAnimation(loadingAnim);
         iv.startAnimation(loadingAnim);
         final Intent i = new Intent(this, LoginActivity.class);
+
+        // Keeps main thread inactive until animation can finish
         Thread timer = new Thread(){
             public void run (){
                 try{
@@ -35,6 +44,7 @@ private ImageView iv ;
                     e.printStackTrace();
                 }
                 finally {
+                    // Launches login activity
                     startActivity(i);
                     finish();
                 }
