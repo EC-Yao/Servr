@@ -18,22 +18,27 @@ import java.util.ArrayList;
 /** November 27th, 2017
  *  Eddy Yao
  *
- *      Displays currently logged in users information
+ *      Displays currently logged in users information, including username, email, phone, etc.. This
+ *  fragment is part of the swipe layout used under the main activity, and can thus be accessed at
+ *  any point by swiping between this and the stream fragment.
  */
-
 
 public class ProfileFragment extends Fragment{
 
+    // Base UI element upon which everything is built / rooted
     private View rootView;
 
+    // Constructor - Doesn't do anything except instance the object
     public ProfileFragment(){}
 
+    // Sets base layout element using given parameters and UI elements
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_profile, container, false);
         return rootView;
     }
 
+    // Updates user information whenever this fragment is refreshed
     @Override
     public void onResume(){
         super.onResume();
