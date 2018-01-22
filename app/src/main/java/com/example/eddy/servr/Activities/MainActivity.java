@@ -4,8 +4,6 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -14,14 +12,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-
-
 import com.example.eddy.servr.R;
-import com.example.eddy.servr.ServerConnection;
 import com.example.eddy.servr.fragments.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +25,9 @@ import java.util.List;
  *  November 13th, 2017
  *  Darren Liu
  *
- *      Main activity acting as a home page and housing different fragments
+ *      Main activity acting as a home page and housing different fragments - This is the
+ *      launchpad for our application, allowing the user to access all parts of the application
+ *      through various UI components
  */
 
 public class MainActivity extends AppCompatActivity {
@@ -43,19 +40,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // connects the XML layout file with the Java file
         setContentView(R.layout.activity_main);
 
-        //Initializes the toolbar
+        // Initializes the toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //Sets up the swipe layout
-
+        // SwipeLayout setup
         myTabs = findViewById(R.id.MyTabs);
         myPage = findViewById(R.id.MyPage);
-
         myTabs.setupWithViewPager(myPage);
-
         setUpViewPager(myPage);
     }
 
@@ -64,17 +60,16 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.navigation_menu, menu);
 
+        // Instantiates the search bar and the needed managers
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.menuSearch).getActionView();
-
-
-        //Eddy wtf do we do this is bothering me;already tried a trycatch
-        if(searchManager.getSearchableInfo(getComponentName())==null){
-            System.err.println("MainActivity.java @ searchManager.getSearchableInfo is equal to NULL");
-        }else{
+        try{
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        }catch (NullPointerException e){
+            Log.e("SearchView Null","NPE @ searchView");
         }
 
+        // Declaring menu items for the toolbar
         final MenuItem searchItem = menu.findItem(R.id.menuSearch);
         final MenuItem settingItem = menu.findItem(R.id.action_settings);
 
@@ -125,10 +120,10 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuSearch:
-                System.err.println("Search Pressed");
                 break;
 
             case R.id.action_settings:
+                // Starts the setting activity
                 Intent i = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(i);
                 break;
@@ -141,9 +136,11 @@ public class MainActivity extends AppCompatActivity {
     public void setUpViewPager (ViewPager viewPage){
         myViewPageAdapter adapter =new myViewPageAdapter(getSupportFragmentManager());
 
+        // Instantiates the fragments
         streamFragment = new StreamFragment();
         profileFragment = new ProfileFragment();
 
+        // adds the fragments to the layout
         adapter.addFragmentPage(streamFragment, "Stream");
         adapter.addFragmentPage(profileFragment, "Profile");
 
@@ -151,6 +148,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public class myViewPageAdapter extends FragmentPagerAdapter{
+
+        // Instantiating the array lists
         private List<Fragment> myFragment = new ArrayList<>();
         private List<String>myPageTitle = new ArrayList<>();
 

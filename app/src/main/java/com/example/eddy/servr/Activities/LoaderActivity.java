@@ -13,7 +13,8 @@ import com.example.eddy.servr.R;
  *  November 31, 2017
  *  Darren Liu
  *
- *      Loading activity to display animation upon app launch -
+ *      Loading activity to display animation upon app launch - This activity presents the logo and
+ *      shows the company name
  */
 
 public class LoaderActivity extends AppCompatActivity {
@@ -23,9 +24,12 @@ private ImageView iv ;
     // Instances UI and plays animation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Set parameters
         super.onCreate(savedInstanceState);
+
+        // Connects the xml file with the Java file
         setContentView(R.layout.activity_buffer);
+
+        // Initializes the text field and image view
         tv = findViewById(R.id.bufferText);
         iv = findViewById(R.id.bufferImage);
 

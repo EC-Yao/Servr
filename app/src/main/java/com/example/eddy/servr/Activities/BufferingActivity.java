@@ -1,10 +1,8 @@
 package com.example.eddy.servr.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.preference.PreferenceManager;
 
 import com.example.eddy.servr.R;
 import com.example.eddy.servr.ServerConnection;

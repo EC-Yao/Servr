@@ -5,8 +5,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -14,9 +12,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.example.eddy.servr.R;
@@ -24,7 +20,7 @@ import com.example.eddy.servr.R;
 import java.util.ArrayList;
 
 /**
- *  November 20th, 2017 :) bday - wait that's not my bday - ey
+ *  November 20th, 2017 :) bday - dl // wait that's not my bday - ey
  *  Darren Liu
  *
  *      An activity displaying specific information about the clicked service item
@@ -46,20 +42,23 @@ public class ServiceItemActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Links the XML layout file with the Java file
         setContentView(R.layout.activity_service_item);
+
+        // Toolbar setup
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        if(getSupportActionBar()==null){
-            Log.e("Error", "Null SupportActionBar");
-        }
-        else {
+
+        try{
             getSupportActionBar().setTitle(toolbarName);
+        }catch(NullPointerException e){
+            Log.e("Error", "Null SupportActionBar");
         }
 
         //Sets up floating action button
         mContext = getApplicationContext();
         mCoordinatorLayout = findViewById(R.id.coordinator_layout);
-
         FloatingActionButton fab = findViewById(R.id.ServiceFAB);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,11 +80,12 @@ public class ServiceItemActivity extends AppCompatActivity {
                     TextView userName = customView.findViewById(R.id.user_name);
                     TextView userInfo = customView.findViewById(R.id.user_info);
 
+                    // String concatenation
                     userName.setText(user.get(1));
                     userInfo.setText(user.get(3) + "\n" + user.get(4) + "\n" +
                         user.get(5) + ", " + user.get(6).replaceAll("]", ""));
 
-                    //creates the close button
+                    // Initializes the close button to allow it to close
                     ImageButton closeButton = customView.findViewById(R.id.close_button);
                     closeButton.setOnClickListener(new View.OnClickListener(){
                         public void onClick(View view){

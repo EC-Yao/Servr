@@ -16,10 +16,10 @@ import java.util.ArrayList;
 /** November 13, 2017
  *  Darren Liu
  *
- *      Class to create card view
+ *      Adapter required for creating the CardView
  */
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
     private ArrayList<ArrayList<String>> mDataset;
 
     // Provide a reference to the views for each data item
@@ -39,13 +39,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(ArrayList<ArrayList<String>> myDataset) {
+    public CardAdapter(ArrayList<ArrayList<String>> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_card, parent, false);
