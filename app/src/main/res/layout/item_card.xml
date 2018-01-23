@@ -22,7 +22,7 @@
                 android:id="@+id/iv_image"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/dao_design_black"
+                android:src="@drawable/ic_local_offer_black_24dp"
                 android:contentDescription="@string/logo_description"/>
 
             <TextView

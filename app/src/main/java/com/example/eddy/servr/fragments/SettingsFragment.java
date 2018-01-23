@@ -8,13 +8,14 @@ import com.example.eddy.servr.R;
 /** January 2, 2018
  *  Darren Liu
  *
- *      Displays currently logged in users information
+ *      Allow the user to changes their password, emails and other user features.
  */
 
 public class SettingsFragment extends PreferenceFragmentCompat {
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
+        // Displays user settings
         setPreferencesFromResource(R.xml.preferences, rootKey);
     }
 
