@@ -40,9 +40,9 @@
     <string name="profile_column_two_title">Trades</string>
     <string name="profile_column_three_title">Last Seen</string>
 
-    <string name="profile_column_one_body">89.2%</string>
-    <string name="profile_column_two_body">273</string>
-    <string name="profile_column_three_body">34m</string>
+    <string name="profile_column_one_body">00.0%</string>
+    <string name="profile_column_two_body">0</string>
+    <string name="profile_column_three_body">Active</string>
 
     <string name="placeholder_email">alex.smith@gmail.com</string>
     <string name="placeholder_phone_number">+(613)–828–2912</string>

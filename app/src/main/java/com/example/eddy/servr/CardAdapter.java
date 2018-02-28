@@ -8,37 +8,44 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.eddy.servr.Activities.BufferingActivity;
 import com.example.eddy.servr.Activities.ServiceItemActivity;
 
-// November 13th, 2017
-// Darren Liu
-// Class to create the card view
+import java.util.ArrayList;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
-    private String[] mDataset;
+/** November 13, 2017
+ *  Darren Liu
+ *
+ *      Adapter required for creating the CardView
+ */
+
+public class CardAdapter extends RecyclerView.Adapter<CardAdapter.MyViewHolder> {
+    private ArrayList<ArrayList<String>> mDataset;
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
     static class MyViewHolder extends RecyclerView.ViewHolder {
         CardView mCardView;
-        TextView mTextView;
+        TextView serviceTitle;
+        TextView serviceDescription;
         MyViewHolder(View v) {
             super(v);
 
             mCardView = v.findViewById(R.id.card_view);
-            mTextView = v.findViewById(R.id.tv_text);
+            serviceTitle = v.findViewById(R.id.tv_text);
+            serviceDescription = v.findViewById(R.id.tv_description);
         }
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(String[] myDataset) {
+    public CardAdapter(ArrayList<ArrayList<String>> myDataset) {
         mDataset = myDataset;
     }
 
     // Create new views (invoked by the layout manager)
     @Override
-    public MyAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CardAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_card, parent, false);
@@ -48,12 +55,15 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        holder.mTextView.setText(mDataset[position]);
+        holder.serviceTitle.setText(mDataset.get(position).get(2));
+        holder.serviceDescription.setText(mDataset.get(position).get(3));
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                ServiceItemActivity.toolbarName = mDataset[position];
+                ServiceItemActivity.toolbarName = mDataset.get(position).get(2);
+                ServiceItemActivity.description = mDataset.get(position).get(3);
+                ServiceItemActivity.price = mDataset.get(position).get(4);
+                ServiceItemActivity.user = BufferingActivity.servr.getUser(Integer.parseInt(mDataset.get(position).get(1).replaceAll(" ", "")));
                 Intent i = new Intent(view.getContext(), ServiceItemActivity.class);
                 view.getContext().startActivity(i);
             }
@@ -62,6 +72,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public int getItemCount() {
-        return mDataset.length;
+        return mDataset.size();
     }
 }

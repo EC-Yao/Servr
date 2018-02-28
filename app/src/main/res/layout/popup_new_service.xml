@@ -58,7 +58,7 @@
                 android:textSize="15sp"
                 android:padding="5sp"
                 android:inputType="textPersonName"
-                android:hint=""
+                android:hint="@string/new_service_title_hint"
                 android:imeOptions="actionNext"
                 android:ellipsize="end"/>
         </android.support.design.widget.TextInputLayout>

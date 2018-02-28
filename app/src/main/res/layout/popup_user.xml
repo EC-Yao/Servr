@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/new_custom_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:padding="2dp"
+    android:background="@color/colorAccentRed1"
+    >
+
+    <ImageButton
+        android:contentDescription="@string/close_button"
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_white_24dp"
+        android:layout_alignParentEnd="true"
+        android:background="@null"
+        android:layout_toEndOf="@id/reg_linear_layout"
+        />
+
+    <LinearLayout
+        android:id="@+id/reg_linear_layout_2"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:paddingEnd="14sp"
+        android:paddingStart="25sp"
+        android:theme="@style/MyEditTextTheme">
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:paddingTop="25sp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/register_title"/>
+
+        <TextView
+            android:id="@+id/user_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:paddingTop="20sp"
+            android:paddingBottom="5sp"
+            android:text="@string/register_popup"
+            android:textColor="@color/colorPrimary" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

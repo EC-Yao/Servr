@@ -4,7 +4,6 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.LoaderManager.LoaderCallbacks;
 import android.content.Context;
 import android.content.CursorLoader;
@@ -45,35 +44,28 @@ import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
-// ???
-// Eddy Yao
-// ???
+/** October 25, 2017
+ *  Eddy Yao
+ *
+ *      Log-in activity - Allows user to login or register an account using the text boxes provided
+ *  This activity will communicate with the server and pass the necessary information, and eventually
+ *  launch the main activity of the application when required.
+*/
 
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
+    // Initialize layout elements
     private Context mContext;
     private Button registerButton;
     private LinearLayout mLinearLayout;
     private PopupWindow mPopupWindow;
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
     private static final int REQUEST_READ_CONTACTS = 0;
 
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
+    // Keep track of the login task to ensure we can cancel it if requested.
     private UserLoginTask mAuthTask = null;
 
-    // UI references
+    // Further UI references
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
@@ -86,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private TextInputEditText city;
     private TextInputEditText country;
 
+    // Instances activity and creates UI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,7 +88,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView = findViewById(R.id.email);
         populateAutoComplete();
 
-        //initializes the password text field
+        // Initializes necessary text fields - email and password
         mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -108,7 +101,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        //initializes the email text field
         Button mEmailSignInButton = findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -117,29 +109,18 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             }
         });
 
-        //temporary button to bypass the login system
-        Button tempCheatButton = findViewById(R.id.cheat_button);
-        tempCheatButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-                //BufferingActivity.servr.sendMessage("Log-in Bypassed");
-
-                //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-
-                startMainActivity();
-            }
-        });
-
+        // Assigns UI components
         mContext = getApplicationContext();
         mLinearLayout = findViewById(R.id.login_layout);
+        mLoginFormView = findViewById(R.id.login_form);
+        mProgressView = findViewById(R.id.login_progress);
+
+        // Set up for registration button
         registerButton = findViewById(R.id.register_button);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
-                //inflates the popup xml
+                // Inflates the registration popup menu
                 LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(LAYOUT_INFLATER_SERVICE);
 
                 assert inflater != null;
@@ -148,13 +129,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if(customView == null){
                     System.out.println("LOGIN ACTIVITY: customView is null");
                 }else{
-                    //initializes the popup window
+                    // Initializes the popup window
                     mPopupWindow = new PopupWindow(customView, 650, 1200);
+                    mPopupWindow.setElevation(5.0f);
 
-                    //set an elevation value for the popup window
-                        mPopupWindow.setElevation(5.0f);
-
-                    //creates the close button
+                    // Creates the close button
                     ImageButton closeButton = customView.findViewById(R.id.ib_close);
                     closeButton.setOnClickListener(new View.OnClickListener(){
                         public void onClick(View view){
@@ -162,11 +141,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         }
                     });
 
-                    //allows the editTexts to be edited
+                    // Allows the text fields to be edited
                     mPopupWindow.setFocusable(true);
                     mPopupWindow.update();
-
-                    //declaring editTexts
 
                     //Saving the users submissions
                     Button submit = customView.findViewById(R.id.sumbit_reg_button);
@@ -177,9 +154,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         submit.setOnClickListener(new View.OnClickListener(){
                             @Override
                             public void onClick(View view) {
+                                // Error trapping of inputted values
                                 Boolean validRegistration = true;
 
-                                //error trapping
                                 TextInputEditText user = customView.findViewById(R.id.user_reg_edit);
                                 TextInputEditText pin = customView.findViewById(R.id.pin_reg_edit);
                                 TextInputEditText email = customView.findViewById(R.id.email_reg_edit);
@@ -206,10 +183,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
                                 if (validRegistration){
                                     try{
+                                        // Registers user to server if the input passes error checking
                                         BufferingActivity.servr.register(String.format("%s,%s,%s,%s,%s,%s",
                                                 user.getText().toString(), pin.getText().toString(),
                                                 email.getText().toString(), phone.getText().toString(),
                                                 city.getText().toString(), country.getText().toString()));
+
+                                        // Logs user in as soon as registration is finished
                                         mEmailView.setText(email.getText().toString());
                                         mPasswordView.setText(pin.getText().toString());
                                         attemptLogin();
@@ -220,10 +200,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                             }
                         });
 
-                        //stops the keyboard from opening on startup
+                        // Stops the keyboard from opening on startup
                         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-                        //show the pop up window at the center of the layout
+                        // Show the pop up window at the center of the layout
                         mLinearLayout.post(new Runnable() {
                             public void run() {
                                 mPopupWindow.showAtLocation(mLinearLayout, Gravity.CENTER, 0, 0);
@@ -234,10 +214,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 }
             }
         });
-
-        mLoginFormView = findViewById(R.id.login_form);
-        mProgressView = findViewById(R.id.login_progress);
     }
+
+    // Reads contacts for any relevant information
     private void populateAutoComplete() {
         if (!mayRequestContacts()) {
             return;
@@ -246,11 +225,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         getLoaderManager().initLoader(0, null, this);
     }
 
+    // Checks if app has permission to read contacts as per Android OS
     private boolean mayRequestContacts() {
         if (checkSelfPermission(READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             return true;
         }
         if (shouldShowRequestPermissionRationale(READ_CONTACTS)) {
+            // Requests permission to read contacts if it has not been granted yet
             Snackbar.make(mEmailView, R.string.permission_rationale, Snackbar.LENGTH_INDEFINITE)
                     .setAction(android.R.string.ok, new View.OnClickListener() {
                         @Override
@@ -265,9 +246,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
+    // Callback received when a permissions request has been completed.
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -278,12 +257,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-
+    // Attempts to sign in the account specified by the login form. If there are form errors
+    // (invalid email, missing fields, etc.), the errors are presented and no login attempt is made.
     private void attemptLogin() {
         if (mAuthTask != null) {
             return;
@@ -327,8 +302,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // perform the user login attempt.
             showProgress(true);
 
+            // Sets up a new login task with the provide login form
             mAuthTask = new UserLoginTask(email, password);
             try {
+                // Executes login task
                 mAuthTask.execute();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -336,11 +313,12 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
+    // Verifies if email is valid
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
+    // Verifies if password (4-digit PIN) is valid
     private boolean isPasswordValid(String pin) {
         if(pin.length()==4) {
             try {
@@ -353,6 +331,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
+    // Verifies if phone number is valid
     private boolean isPhoneValid(String phone){
         try{
             Long.parseLong(phone.replace("-", "").replace("(", "")
@@ -363,14 +342,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         }
     }
 
-    /**
-     * Shows the progress UI and hides the login form.
-     */
+    // Shows the progress UI and hides the login form.
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
+        // Honeycomb APIs allow for easier animations. Used to fade the progress spinner.
         int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
         mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
@@ -392,6 +367,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             });
     }
 
+    // Initiates loading process in case there exists saved information
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         return new CursorLoader(this,
@@ -409,6 +385,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 ContactsContract.Contacts.Data.IS_PRIMARY + " DESC");
     }
 
+    // Retrieves result of loading process and stores any returned information
     @Override
     public void onLoadFinished(Loader<Cursor> cursorLoader, Cursor cursor) {
         List<String> emails = new ArrayList<>();
@@ -426,6 +403,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
+    // Uses results from loading process to autocomplete email if possible
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
@@ -435,7 +413,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-
+    // Query used to retrieve saved emails in loading process
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -446,31 +424,31 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
+    // Launches main activity once login is finished
     protected void startMainActivity() {
         Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
+    // Represents an asynchronous task which attempts the login and runs in a background thread
     @SuppressLint("StaticFieldLeak")
     private class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
+        // Login parameters
         private final String mEmail;
         private final String mPassword;
 
+        // Constructor which declares login parameters as per the login form
         UserLoginTask(String email, String password) {
             mEmail = email;
             mPassword = password;
         }
 
+        // Runs login process in a background thread so as to not interfere with the UI
         @Override
         protected Boolean doInBackground(Void... voids) {
-            // TODO: attempt authentication against a network service.
-
             try {
+                // Attempts to login using public server object from BufferingActivity
                 BufferingActivity.servr.login(mEmail + ":" + mPassword);
             } catch (Exception e) {
                 Log.e("Log-in Error", e.getMessage() + "\n" + e.getCause());
@@ -479,39 +457,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             return true;
         }
 
+        // Runs once the login attempt is finished
         @Override
         protected void onPostExecute(final Boolean success) {
             mAuthTask = null;
             showProgress(false);
 
+            // Successfully logs in and launches main activity if the server object successfully
+            // executed the login attempt, as indicated by the public static user of the class
             if (ServerConnection.user != null) {
                 startMainActivity();
                 finish();
             } else {
+                // Sends error message if otherwise
                 mPasswordView.setError(getString(R.string.error_incorrect_credentials));
                 mPasswordView.requestFocus();
             }
         }
 
+        // Cancels login
         @Override
         protected void onCancelled() {
             mAuthTask = null;
             showProgress(false);
         }
     }
-
-//    public void showRegisterScreen(View anchorView){
-//        View popupView = getLayoutInflater().inflate(R.layout.fragment_popup, null);
-//        PopupWindow popupWindow = new PopupWindow(popupView, Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.WRAP_CONTENT);
-//        TextView tv = popupView.findViewById(R.id.popupTextView);
-//        tv.setText(R.string.placeholder_email);
-//        popupWindow.setBackgroundDrawable(new ColorDrawable());
-//
-//        popupWindow.setFocusable(true);
-//        int location[] = new int[2];
-//        anchorView.getLocationOnScreen(location);
-//        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0,0);
-//        //popupWindow.showAtLocation(anchorView, Gravity.NO_GRAVITY, location[0], location[1] + anchorView.getHeight());
-//    }
 }
 
