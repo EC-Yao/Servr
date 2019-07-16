@@ -1,4 +1,4 @@
-# ICS4U - Servr
+# Servr
 
 Servr, the Android e-commerce platform for sales of services.
   
