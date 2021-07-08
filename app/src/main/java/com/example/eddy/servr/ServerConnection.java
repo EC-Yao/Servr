@@ -38,7 +38,7 @@ public class ServerConnection {
     public static ArrayList<ArrayList<String>> userServices;
     public static ArrayList<ArrayList<String>> streamServices;
 
-    // Constructor method - Ensures everything is working
+    // Constructor method. This ensures that everything is working
     public ServerConnection(){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
